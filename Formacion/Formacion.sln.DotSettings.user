@@ -1,0 +1,10 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3b54e1e3_002D8a3e_002D46f0_002D9ef6_002D5c529175f1d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_we_save_a_student_we_have_it&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_we_ask_for_a_student_we_can_recover_it&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_try_save_exist_name_return_student_exist&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_we_save_a_student_we_have_it_with_mock&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_try_save_exist_name_return_student_exist_with_mocks&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
