@@ -5,14 +5,14 @@ using Kata1.Interfaces;
 
 namespace Kata1{
     public class ClsVideo{
-        private readonly IClsRepositotyVideo _clsRepositotyVideo;
+        private readonly IClsVideoRepositoty _clsVideoRepositoty;
         private List<Video> listVideos;
-        public ClsVideo(IClsRepositotyVideo clsRepositotyVideo){
-            _clsRepositotyVideo = clsRepositotyVideo;
+        public ClsVideo(IClsVideoRepositoty clsVideoRepositoty){
+            _clsVideoRepositoty = clsVideoRepositoty;
             listVideos = new List<Video>();
         }
         public Video Add(Video newVideo){
-            return _clsRepositotyVideo.Add(newVideo);
+            return _clsVideoRepositoty.Add(newVideo);
         }
     }
 }

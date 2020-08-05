@@ -58,7 +58,7 @@
     <Compile Include="Dtos\StudentAlreadyExist.cs" />
     <Compile Include="Dtos\Video.cs" />
     <Compile Include="Interfaces\iClock.cs" />
-    <Compile Include="Interfaces\IClsRepositotyVideo.cs" />
+    <Compile Include="Interfaces\IClsVideoRepositoty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
