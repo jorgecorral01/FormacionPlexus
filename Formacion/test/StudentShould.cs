@@ -10,16 +10,17 @@ namespace test{
     public class StudentShould{
         private Student student ;
         private Student newStudent ;
+        private ClsStudentRepository clsStudentRepository;
 
         [SetUp]
         public void Setup(){
             student = GivenAStudent("Peter", "House");
             newStudent = GivenAStudent("Peter", "Grey");
+            clsStudentRepository = new ClsStudentRepository();
         }
 
         [Test]
         public void when_we_save_a_student_we_have_it(){
-            var clsStudentRepository = new ClsStudentRepository();
 
             clsStudentRepository.Save(student);
 
@@ -30,17 +31,9 @@ namespace test{
             //Forma mejor
             clsStudentRepository.ListStudents[0].Should().BeEquivalentTo(student);
         }
-
-        private static Student GivenAStudent(string name, string surname){
-            return new Student{
-                Name = name,
-                Surname = surname
-            };
-        }
-
+        
         [Test]
         public void when_we_ask_for_a_student_we_can_recover_it() {
-            var clsStudentRepository = new ClsStudentRepository();
             clsStudentRepository.Save(student);
 
             var actualStudent = clsStudentRepository.FindByName(student.Name);
@@ -54,7 +47,6 @@ namespace test{
 
         [Test]
         public void when_try_save_exist_name_return_student_exist(){
-            var clsStudentRepository = new ClsStudentRepository();
             clsStudentRepository.Save(student);
 
             var actualStudent = clsStudentRepository.Save(newStudent);
@@ -73,15 +65,12 @@ namespace test{
             //catch (Exception e){
             //    e.GetType().Should().BeOfType<StudentAlreadyExist>();
             //}
-
-
         }
 
         [Test]
         public void when_we_save_a_student_we_have_it_with_mock() {
-            var clsStudentRepository = Substitute.For<ClsStudentRepository>();
-            clsStudentRepository.Save(student).Returns(student);
-            clsStudentRepository.ListStudents.Add(student);// TODO no se si esto estaria bien.
+            GivenAStudenRepositoryMock();
+            GivenDataForStudentRepositoryMock(student);
 
             clsStudentRepository.Save(student);
 
@@ -91,10 +80,10 @@ namespace test{
         }
 
         [Test]
-        public void when_try_save_exist_name_return_student_exist_with_mocks() {
-            var clsStudentRepository = Substitute.For<ClsStudentRepository>();
-            clsStudentRepository.Save(student).Returns(student);
-            clsStudentRepository.Save(newStudent).Returns(new StudentAlreadyExist());
+        public void when_try_save_exist_name_return_student_exist_with_mocks(){
+            GivenAStudenRepositoryMock();
+            GivenDataForStudentRepositoryMock(student);
+            GivenStudentAlreadyExistForstudent();
 
             clsStudentRepository.Save(student);
 
@@ -103,6 +92,26 @@ namespace test{
             actualStudent.Should().BeOfType<StudentAlreadyExist>();
             clsStudentRepository.Received(2).Save(Arg.Any<Student>());
 
+        }
+
+        private void GivenStudentAlreadyExistForstudent(){
+            clsStudentRepository.Save(newStudent).Returns(new StudentAlreadyExist());
+        }
+
+        private void GivenDataForStudentRepositoryMock(Student _student) {
+            clsStudentRepository.Save(_student).Returns(_student);
+            clsStudentRepository.ListStudents.Add(_student); // TODO no se si esto estaria bien.
+        }
+
+        private void GivenAStudenRepositoryMock() {
+            clsStudentRepository = Substitute.For<ClsStudentRepository>();
+        }
+
+        private static Student GivenAStudent(string name, string surname) {
+            return new Student {
+                Name = name,
+                Surname = surname
+            };
         }
     }
 }
