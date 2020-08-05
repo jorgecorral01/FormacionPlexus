@@ -8,15 +8,20 @@ namespace test{
     public class ClsVideoShould{
         [Test]
         public void when_create_new_video_return_the_same_video(){
-            IClsVideoRepositoty clsVideoRepositoty = Substitute.For<IClsVideoRepositoty>();
-            var newVideo = new Video{name = "fakeVideo", format="avi"};
+            var newVideo = new Video { name = "fakeVideo", format = "avi" };
+            var clsVideoRepositoty = GivenAClsVideoRepositoty(newVideo);
             var clsVideo = new ClsVideo(clsVideoRepositoty);
-            clsVideoRepositoty.Add(newVideo).Returns(newVideo);
-            
+
             var actualVideo =  clsVideo.Add(newVideo);
 
             actualVideo.Should().BeEquivalentTo(newVideo);
             clsVideoRepositoty.Received(1).Add(newVideo);
+        }
+
+        private static IClsVideoRepositoty GivenAClsVideoRepositoty(Video newVideo){
+            IClsVideoRepositoty clsVideoRepositoty = Substitute.For<IClsVideoRepositoty>();
+            clsVideoRepositoty.Add(newVideo).Returns(newVideo);
+            return clsVideoRepositoty;
         }
     }
 }
