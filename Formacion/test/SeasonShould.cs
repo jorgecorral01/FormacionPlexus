@@ -26,13 +26,23 @@ namespace test{
         }
 
         [Test]
-        public void given_a_twenty_two_of_june_date_return_spring() {
+        public void given_a_twenty_two_of_june_date_return_summer() {
             var date = Convert.ToDateTime("22/06/2019");
             var clsSeason = new ClsSeason();
 
             var actualSeason = clsSeason.GetSeason(date);
 
             actualSeason.Should().Be("Summer");
+        }
+
+        [Test]
+        public void given_a_twenty_two_of_september_date_return_autumn() {
+            var date = Convert.ToDateTime("22/09/2019");
+            var clsSeason = new ClsSeason();
+
+            var actualSeason = clsSeason.GetSeason(date);
+
+            actualSeason.Should().Be("Autumn");
         }
     }
 }
