@@ -8,13 +8,17 @@ using NUnit.Framework.Internal;
 
 namespace test{
     public class StudentShould{
+        private Student student ;
+        private Student newStudent ;
+
+        [SetUp]
+        public void Setup(){
+            student = GivenAStudent("Peter", "House");
+            newStudent = GivenAStudent("Peter", "Grey");
+        }
 
         [Test]
         public void when_we_save_a_student_we_have_it(){
-            var student = new Student{
-                Name = "Peter",
-                Surname = "House"
-            };
             var clsStudentRepository = new ClsStudentRepository();
 
             clsStudentRepository.Save(student);
@@ -24,16 +28,15 @@ namespace test{
             clsStudentRepository.ListStudents[0].Surname.Should().Be(student.Surname);
         }
 
+        private static Student GivenAStudent(string name, string surname){
+            return new Student{
+                Name = name,
+                Surname = surname
+            };
+        }
+
         [Test]
         public void when_we_ask_for_a_student_we_can_recover_it() {
-            var student2 = new Student {
-                Name = "Peter",
-                Surname = "House"
-            };
-            var student = new Student {
-                Name = "Peter",
-                Surname = "House"
-            };
             var clsStudentRepository = new ClsStudentRepository();
             clsStudentRepository.Save(student);
 
@@ -48,14 +51,6 @@ namespace test{
 
         [Test]
         public void when_try_save_exist_name_return_student_exist(){
-            Student newStudent = new Student {
-                Name = "Peter",
-                Surname = "Grey"
-            };
-            var student = new Student {
-                Name = "Peter",
-                Surname = "House"
-            };
             var clsStudentRepository = new ClsStudentRepository();
             clsStudentRepository.Save(student);
 
@@ -81,10 +76,6 @@ namespace test{
 
         [Test]
         public void when_we_save_a_student_we_have_it_with_mock() {
-            var student = new Student {
-                Name = "Peter",
-                Surname = "House"
-            };
             var clsStudentRepository = Substitute.For<ClsStudentRepository>();
             clsStudentRepository.Save(student).Returns(student);
             clsStudentRepository.ListStudents.Add(student);// TODO no se si esto estaria bien.
@@ -98,14 +89,6 @@ namespace test{
 
         [Test]
         public void when_try_save_exist_name_return_student_exist_with_mocks() {
-            Student newStudent = new Student {
-                Name = "Peter",
-                Surname = "Grey"
-            };
-            var student = new Student {
-                Name = "Peter",
-                Surname = "House"
-            };
             var clsStudentRepository = Substitute.For<ClsStudentRepository>();
             clsStudentRepository.Save(student).Returns(student);
             clsStudentRepository.Save(newStudent).Returns(new StudentAlreadyExist());
