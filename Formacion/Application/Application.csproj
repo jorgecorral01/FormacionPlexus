@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9A0199F2-54EF-4891-80CF-F4F09B64B8F1}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Kata1</RootNamespace>
-    <AssemblyName>Kata1</AssemblyName>
+    <ProjectGuid>{803947E1-114A-41AB-8807-60FB6D3868E8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Application</RootNamespace>
+    <AssemblyName>Application</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>Application.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,14 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clock.cs" />
-    <Compile Include="ClsFizzBuzz.cs" />
-    <Compile Include="ClsSeason.cs" />
-    <Compile Include="ClsStudentRepository.cs" />
-    <Compile Include="Dtos\Student.cs" />
-    <Compile Include="Dtos\StudentAlreadyExist.cs" />
-    <Compile Include="Interfaces\iClock.cs" />
+    <Compile Include="Forms\FrmSeasons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSeasons.Designer.cs">
+      <DependentUpon>FrmSeasons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmSeasons.resx">
+      <DependentUpon>FrmSeasons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -79,6 +82,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Kata1\Katas.csproj">
+      <Project>{9a0199f2-54ef-4891-80cf-f4f09b64b8f1}</Project>
+      <Name>Katas</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

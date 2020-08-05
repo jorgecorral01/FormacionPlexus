@@ -3,7 +3,7 @@ using Kata1.interfaces;
 
 namespace Kata1{
     public class ClsSeason{
-        public iClock Clock{ get; }
+        private iClock Clock{ get; }
 
         public ClsSeason(iClock clock){
             Clock = clock;

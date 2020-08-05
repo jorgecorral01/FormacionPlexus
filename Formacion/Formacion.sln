@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas", "Kata1\Katas.csproj", "{9A0199F2-54EF-4891-80CF-F4F09B64B8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{089359A9-0A69-4A35-BF39-FC5D3C4F73F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", "{089359A9-0A69-4A35-BF39-FC5D3C4F73F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{803947E1-114A-41AB-8807-60FB6D3868E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{089359A9-0A69-4A35-BF39-FC5D3C4F73F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{089359A9-0A69-4A35-BF39-FC5D3C4F73F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{089359A9-0A69-4A35-BF39-FC5D3C4F73F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803947E1-114A-41AB-8807-60FB6D3868E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803947E1-114A-41AB-8807-60FB6D3868E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803947E1-114A-41AB-8807-60FB6D3868E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803947E1-114A-41AB-8807-60FB6D3868E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

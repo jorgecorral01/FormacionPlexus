@@ -7,4 +7,9 @@
     &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_we_save_a_student_we_have_it_with_mock&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_try_save_exist_name_return_student_exist_with_mocks&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7d52bb76_002D1f7f_002D4d97_002Dacd7_002D6b19cf0737d4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="given_a_date_return_his_season" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.SeasonShould&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
