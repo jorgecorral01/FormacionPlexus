@@ -24,8 +24,11 @@ namespace test{
             clsStudentRepository.Save(student);
 
             clsStudentRepository.ListStudents.Should().HaveCount(1);
+            //Forma mala
             clsStudentRepository.ListStudents[0].Name.Should().Be(student.Name);
             clsStudentRepository.ListStudents[0].Surname.Should().Be(student.Surname);
+            //Forma mejor
+            clsStudentRepository.ListStudents[0].Should().BeEquivalentTo(student);
         }
 
         private static Student GivenAStudent(string name, string surname){
