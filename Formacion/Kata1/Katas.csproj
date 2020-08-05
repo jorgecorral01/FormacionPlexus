@@ -54,6 +54,7 @@
     <Compile Include="ClsStudentRepository.cs" />
     <Compile Include="Dtos\Student.cs" />
     <Compile Include="Dtos\StudentAlreadyExist.cs" />
+    <Compile Include="interfaces\iClock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
