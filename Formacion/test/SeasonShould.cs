@@ -24,5 +24,15 @@ namespace test{
 
             actualSeason.Should().Be("Spring");
         }
+
+        [Test]
+        public void given_a_twenty_two_of_june_date_return_spring() {
+            var date = Convert.ToDateTime("22/06/2019");
+            var clsSeason = new ClsSeason();
+
+            var actualSeason = clsSeason.GetSeason(date);
+
+            actualSeason.Should().Be("Summer");
+        }
     }
 }
