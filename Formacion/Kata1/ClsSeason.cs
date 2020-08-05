@@ -20,7 +20,7 @@ namespace Kata1{
             if((date >= startAutumn) && (date <= finishAutumn)) {
                 return "Autumn";
             }
-            return null;
+            return "Winter";
         }
     }
 }

@@ -44,5 +44,15 @@ namespace test{
 
             actualSeason.Should().Be("Autumn");
         }
+
+        [Test]
+        public void given_a_one_of_january_date_return_winter() {
+            var date = Convert.ToDateTime("01/01/2019");
+            var clsSeason = new ClsSeason();
+
+            var actualSeason = clsSeason.GetSeason(date);
+
+            actualSeason.Should().Be("Winter");
+        }
     }
 }
