@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using Kata1.Dtos;
 using Kata1.Interfaces;
+using MiAPI.Business.Dtos;
 
 namespace Kata1{
     public class ClsVideo{

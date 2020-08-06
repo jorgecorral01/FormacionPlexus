@@ -2,6 +2,7 @@
 using Kata1;
 using Kata1.Dtos;
 using Kata1.Interfaces;
+using MiAPI.Business.Dtos;
 using NSubstitute;
 using NUnit.Framework;
 namespace test{
