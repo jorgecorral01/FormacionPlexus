@@ -3,7 +3,7 @@
 namespace Kata1{
     public class ClsFizzBuzz{
         public string EsDivisiblePor(int number){
-            if(number % 3 == 0 && number % 5 == 0) {
+            if(number % 3 == 0 || number % 5 == 0) {
                 return "fizzbuzz";
             }
             if (number % 3 == 0){
