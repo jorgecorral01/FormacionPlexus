@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Kata1;
 using Kata1.Dtos;
-using Kata1.Interfaces;
 using MiAPI.Business.Dtos;
+using MiAPI.Repositories.interfaces;
 using NSubstitute;
 using NUnit.Framework;
 namespace test{
@@ -19,10 +19,10 @@ namespace test{
             clsVideoRepositoty.Received(1).Add(newVideo);
         }
 
-        private static IClsVideoRepositoty GivenAClsVideoRepositoty(Video newVideo){
-            IClsVideoRepositoty clsVideoRepositoty = Substitute.For<IClsVideoRepositoty>();
-            clsVideoRepositoty.Add(newVideo).Returns(newVideo);
-            return clsVideoRepositoty;
+        private static IClsVideoRepository GivenAClsVideoRepositoty(Video newVideo){
+            IClsVideoRepository clsVideoRepository = Substitute.For<IClsVideoRepository>();
+            clsVideoRepository.Add(newVideo).Returns(newVideo);
+            return clsVideoRepository;
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using MiAPI.Business.Dtos;
+using MiAPI.Repositories.interfaces;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace MiAPI.Api.Controllers.Test{
@@ -9,15 +11,17 @@ namespace MiAPI.Api.Controllers.Test{
         [Test]
         public async Task when_we_ask_for_a_video_we_obtein(){
             var nombreVideoABuscar = "fiesta";
+            var expectedVideo = new Video { format = "jpg", name = "fiesta" };
             HttpClient client = new HttpClient();
-            var requestUri = string.Format("https://localhost:44314/api/Video/{0}", nombreVideoABuscar);
-            
+            var requestUri = string.Format("http://localhost:35555/api/video/{0}", nombreVideoABuscar);
+            //var clsVideoRepository = Substitute.For<IClsVideoRepository>();
+            //clsVideoRepository.Find(nombreVideoABuscar).Returns(expectedVideo);
+
             var result = await client.GetAsync(requestUri);
             var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
             
-            var expectedVideo = new Video{format = "jpg", name = "fiesta" };
             actualVideo.Should().BeEquivalentTo(expectedVideo);
-
+            //clsVideoRepository.Received(1).Find(nombreVideoABuscar);
 
         }
     }

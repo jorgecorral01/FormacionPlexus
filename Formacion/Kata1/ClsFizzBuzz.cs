@@ -12,7 +12,7 @@ namespace Kata1{
             if(number % 5 == 0) {
                 return "buzz";
             }
-            return number.ToString();
+            return number.ToString(); 
         }
     }
 }

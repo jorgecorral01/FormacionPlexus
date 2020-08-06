@@ -12,7 +12,7 @@ namespace MiAPI.API.Controllers {
         // GET api/video/name
         [HttpGet("{name}")]
         public ActionResult<Video> Get(string name) {
-            return new Video { format = "jpg", name = "fiesta" };
+            return new Video { format = "jpg", name = name };
         }
     }
 }
