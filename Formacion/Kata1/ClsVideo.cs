@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Kata1.Dtos;
-using Kata1.Interfaces;
 using MiAPI.Business.Dtos;
+using MiAPI.Repositories.interfaces;
 
 namespace Kata1{
     public class ClsVideo{
-        private readonly IClsVideoRepositoty _clsVideoRepositoty;
+        private readonly IClsVideoRepository _clsVideoRepository;
         private List<Video> listVideos;
-        public ClsVideo(IClsVideoRepositoty clsVideoRepositoty){
-            _clsVideoRepositoty = clsVideoRepositoty;
+        public ClsVideo(IClsVideoRepository clsVideoRepository){
+            _clsVideoRepository = clsVideoRepository;
             listVideos = new List<Video>();
         }
         public Video Add(Video newVideo){
-            return _clsVideoRepositoty.Add(newVideo);
+            return _clsVideoRepository.Add(newVideo);
         }
     }
 }
