@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.Repositories", "MiAPI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.Actions", "MiAPI\MiAPI.Actions\MiAPI.Actions.csproj", "{1AFB3EF0-3AF9-405F-A6BD-49B1AE276824}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiAPI.Actions.Test", "Tests\MiAPI.Actions.Test\MiAPI.Actions.Test.csproj", "{52416A6D-0558-4199-8C75-9A5BDD86B63C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{1AFB3EF0-3AF9-405F-A6BD-49B1AE276824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AFB3EF0-3AF9-405F-A6BD-49B1AE276824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AFB3EF0-3AF9-405F-A6BD-49B1AE276824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52416A6D-0558-4199-8C75-9A5BDD86B63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52416A6D-0558-4199-8C75-9A5BDD86B63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52416A6D-0558-4199-8C75-9A5BDD86B63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52416A6D-0558-4199-8C75-9A5BDD86B63C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{8F5C74DB-8EF1-4273-9B1D-80E0EC2C1B06} = {15E171AA-CFEE-4BE2-9E77-292A6FA543C6}
 		{F2CA878F-EC71-479C-8DA8-EC40B4B17490} = {15E171AA-CFEE-4BE2-9E77-292A6FA543C6}
 		{1AFB3EF0-3AF9-405F-A6BD-49B1AE276824} = {15E171AA-CFEE-4BE2-9E77-292A6FA543C6}
+		{52416A6D-0558-4199-8C75-9A5BDD86B63C} = {C52349EF-706C-41B9-A1E4-0F2211A157F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06929A49-B43D-40A2-9983-F9BD3776123D}

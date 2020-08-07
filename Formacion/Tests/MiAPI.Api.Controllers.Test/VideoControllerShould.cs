@@ -22,7 +22,8 @@ namespace MiAPI.Api.Controllers.Test{
             var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
             
             actualVideo.Should().BeEquivalentTo(expectedVideo);
-            // TODO  await clsVideoRepository.Received(1).Find(nombreVideoABuscar);
+            // TODO Dice que no recibe ninguna llamada pero devuelve algo, Con lo que si que entra.
+            //await clsVideoRepository.Received(1).Find(nombreVideoABuscar);
         }
     }
 }
