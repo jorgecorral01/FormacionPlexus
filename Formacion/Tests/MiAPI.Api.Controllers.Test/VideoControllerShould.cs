@@ -11,19 +11,25 @@ namespace MiAPI.Api.Controllers.Test{
     public class VideoControllerShould{
         [Test]
         public async Task when_we_ask_for_a_video_we_obtain(){
-            var nombreVideoABuscar = "fiesta";
-            var expectedVideo = new Video { format = "avi", name = nombreVideoABuscar };
-            HttpClient client = new HttpClient();
-            var requestUri = string.Format("http://localhost:35555/api/video/{0}", nombreVideoABuscar);
-            var clsVideoRepository = Substitute.For<ClsVideoRepository>();
-            clsVideoRepository.Find(nombreVideoABuscar).Returns(expectedVideo);
+            var expectedVideo = ForGivenData(out var client, out var requestUri);
 
+            var actualVideo = await FindVideo(client, requestUri);
+
+            actualVideo.Should().BeEquivalentTo(expectedVideo);
+        }
+
+        private static Video ForGivenData(out HttpClient client, out string requestUri){
+            var nombreVideoABuscar = "fiesta";
+            var expectedVideo = new Video{format = "avi", name = nombreVideoABuscar};
+            client = new HttpClient();
+            requestUri = string.Format("http://localhost:35555/api/video/{0}", nombreVideoABuscar);
+            return expectedVideo;
+        }
+
+        private static async Task<Video> FindVideo(HttpClient client, string requestUri){
             var result = await client.GetAsync(requestUri);
             var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
-            
-            actualVideo.Should().BeEquivalentTo(expectedVideo);
-            // TODO Dice que no recibe ninguna llamada pero devuelve algo, Con lo que si que entra.
-            //await clsVideoRepository.Received(1).Find(nombreVideoABuscar);
+            return actualVideo;
         }
     }
 }
