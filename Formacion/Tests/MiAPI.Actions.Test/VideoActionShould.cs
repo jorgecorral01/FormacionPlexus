@@ -13,10 +13,11 @@ namespace MiAPI.Actions.Test {
             var videoRepository = new ClsVideoRepository();
             var action = new FindVideoAction(videoRepository);
             var nombre = "peli1";
+            var expectVideo = new Video { name = nombre, format = "avi" };
+            videoRepository.Add(expectVideo);
 
             var actualvideo = await action.Execute(nombre);
-
-            var expectVideo = new Video{name = nombre,format = "avi"};
+            
             actualvideo.Should().BeEquivalentTo(expectVideo);
         }
 

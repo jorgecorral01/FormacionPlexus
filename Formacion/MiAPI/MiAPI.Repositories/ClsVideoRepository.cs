@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using MiAPI.Business.Dtos;
@@ -19,8 +20,7 @@ namespace MiAPI.Repositories{
 
         public virtual async Task<Video> Find(string name){
             await Task.Delay(1);
-            
-            return new Video{name = name, format = "avi"};
+            return LisTVideos.FirstOrDefault(item => item.name == name);
         }
 
     }
