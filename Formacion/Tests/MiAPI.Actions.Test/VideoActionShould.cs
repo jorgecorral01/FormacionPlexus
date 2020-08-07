@@ -7,7 +7,7 @@ using NSubstitute;
 using NUnit.Framework;
 
 namespace MiAPI.Actions.Test {
-    public class FindVideoActionShould {
+    public class VideoActionShould {
         [Test]
         public async Task   should_return_a_video_for_a_name(){
             var videoRepository = new ClsVideoRepository();
@@ -19,5 +19,17 @@ namespace MiAPI.Actions.Test {
             var expectVideo = new Video{name = nombre,format = "avi"};
             actualvideo.Should().BeEquivalentTo(expectVideo);
         }
+
+        [Test]
+        public void when_add_video_we_have_one_more_video() {
+            var videoRepository = new ClsVideoRepository();
+            var action = new AddVideoAction(videoRepository);
+            var newVideo = new Video { name = "aprendizaje", format = "avi" };
+
+            action.Execute(newVideo);
+
+            videoRepository.LisTVideos.Should().HaveCount(1);
+        }
+
     }
 }
