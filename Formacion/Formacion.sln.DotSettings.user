@@ -1,4 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=83a1d80e_002D0e8b_002D4598_002D845d_002D1a125388ce79/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ca5992e3_002D3802_002D4cf0_002Dbeba_002Dc0cac74ce712/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="when_we_ask_for_a_video_we_obtein" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::1023C3C2-A88C-4841-96C4-BE3D0166F258::.NETCoreApp,Version=v2.2::MiAPI.Api.Controllers.Test.VideoControllerShould.when_we_ask_for_a_video_we_obtein&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::089359A9-0A69-4A35-BF39-FC5D3C4F73F6::.NETCoreApp,Version=v2.2::test.StudentShould.when_we_ask_for_a_student_we_can_recover_it&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

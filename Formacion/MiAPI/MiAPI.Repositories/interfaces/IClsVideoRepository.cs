@@ -1,8 +1,9 @@
-﻿using MiAPI.Business.Dtos;
+﻿using System.Threading.Tasks;
+using MiAPI.Business.Dtos;
 
 namespace MiAPI.Repositories.interfaces{
     public interface IClsVideoRepository{
         Video Add(Video newVideo);
-        Video Find(string name);
+        Task<Video> Find(string name);
     }
 }
