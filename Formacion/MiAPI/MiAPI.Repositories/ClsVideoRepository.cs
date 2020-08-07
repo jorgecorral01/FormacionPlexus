@@ -8,7 +8,7 @@ namespace MiAPI.Repositories{
             throw new System.NotImplementedException();
         }
 
-        public async Task<Video> Find(string name){
+        public virtual async Task<Video> Find(string name){
             await Task.Delay(1);
             return new Video{name = name, format = "avi"};
         }

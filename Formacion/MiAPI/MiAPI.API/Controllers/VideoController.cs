@@ -21,10 +21,8 @@ namespace MiAPI.API.Controllers {
         // GET api/video/name
         [HttpGet("{name}")]
         public async Task<ActionResult<Video>> Get(string name){
-            //return new Video();
              var video =  await _clsVideoRepositoryFactory.CreateFindVideoAction().Execute(name);
              return video;
-             
         }
     }
 }
