@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MiAPI.Infrastructure.SqlRepository\MiAPI.Infrastructure.SqlRepository.csproj" />
     <ProjectReference Include="..\MiAPI.Repositories\MiAPI.Repositories.csproj" />
   </ItemGroup>
 

@@ -12,7 +12,7 @@ namespace MiAPI.Infrastructure.SqlRepository{
             
         }
 
-        public void Add(Video video){
+        public virtual void Add(Video video){
             using(SqlConnection connection = new SqlConnection(
                 _connectionString)) {
                 SqlCommand command = new SqlCommand(string.Format("insert into videos (name, format) values('{0}','{1}')", video.name, video.format), connection);

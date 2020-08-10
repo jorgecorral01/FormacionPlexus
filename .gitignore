@@ -654,3 +654,13 @@ Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.0/MiAP
 Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.0/MiAPI.Infrastructure.SqlRepository.csprojAssemblyReference.cache
 Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.0/MiAPI.Infrastructure.SqlRepository.dll
 Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.0/MiAPI.Infrastructure.SqlRepository.pdb
+Formacion/MiAPI/MiAPI.Actions/bin/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.dll
+Formacion/MiAPI/MiAPI.Actions/bin/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.pdb
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/MiAPI.Infrastructure.SqlRepository.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/MiAPI.Infrastructure.SqlRepository.pdb
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/System.Data.SqlClient.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/runtimes/win-arm64/native/sni.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/sni.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/sni.dll
