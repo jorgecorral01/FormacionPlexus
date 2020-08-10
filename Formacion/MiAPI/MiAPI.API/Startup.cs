@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using MiAPI.API.Factories;
 using MiAPI.Repositories;
-using MiAPI.Repositories.interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

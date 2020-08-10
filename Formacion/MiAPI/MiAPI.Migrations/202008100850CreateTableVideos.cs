@@ -6,11 +6,11 @@ namespace MiAPI.infrastucture.SqlMigrations {
         private const string TableName = @"Videos";
         public override void Up() {
             Create.Table(TableName)
-                .WithColumn("VideoId").AsInt64().NotNullable()
+                .WithColumn("VideoId").AsInt64().PrimaryKey($"PK_{TableName}").Identity()
                 .WithColumn("Name").AsString().NotNullable()
                 .WithColumn("Format").AsString().NotNullable()
                 .WithColumn("CreateDate").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentDateTime)
-                .WithColumn("UpdateDate").AsDateTime().NotNullable();
+                .WithColumn("UpdateDate").AsDateTime().Nullable();
         }
 
         public override void Down() {

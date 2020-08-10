@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentMigrator.Runner;
 using MiAPI.Migrations;
@@ -14,16 +15,23 @@ using Microsoft.Extensions.Logging;
 namespace MiAPI.API {
     public class Program {
         public static void Main(string[] args) {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddEnvironmentVariables()
-                .AddJsonFile("appsettings.json", optional: false)
-                //.AddUserSecrets<Startup>()
-                .Build();
+            try {
 
-            ApplyMigrations(configuration);
+                var configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddEnvironmentVariables()
+                    .AddJsonFile("appsettings.json", optional: false)
+                    //.AddUserSecrets<Startup>()
+                    .Build();
 
-            CreateWebHostBuilder(args).Build().Run();
+                ApplyMigrations(configuration);
+
+                CreateWebHostBuilder(args).Build().Run();
+
+            }
+            catch(Exception e) {
+                Console.WriteLine(e);
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

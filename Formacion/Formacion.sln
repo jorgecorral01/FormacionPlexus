@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.infrastucture.SqlMigr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiAPI.Infrastructure.SqlRepository", "MiAPI\MiAPI.Infrastructure.SqlRepository\MiAPI.Infrastructure.SqlRepository.csproj", "{FD190A90-1720-4B07-95FB-4F955F7C05AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiAPI.Infrastucture.SqlMigrations.Test", "Tests\MiAPI.infrastucture.SqlMigrations.Test\MiAPI.Infrastucture.SqlMigrations.Test.csproj", "{264443E7-1601-4DB4-99D4-B669B32DADAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{FD190A90-1720-4B07-95FB-4F955F7C05AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD190A90-1720-4B07-95FB-4F955F7C05AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD190A90-1720-4B07-95FB-4F955F7C05AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264443E7-1601-4DB4-99D4-B669B32DADAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264443E7-1601-4DB4-99D4-B669B32DADAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264443E7-1601-4DB4-99D4-B669B32DADAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264443E7-1601-4DB4-99D4-B669B32DADAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{52416A6D-0558-4199-8C75-9A5BDD86B63C} = {C52349EF-706C-41B9-A1E4-0F2211A157F1}
 		{B2A6534E-EF94-428A-9CDF-C126E6A4065D} = {15E171AA-CFEE-4BE2-9E77-292A6FA543C6}
 		{FD190A90-1720-4B07-95FB-4F955F7C05AB} = {15E171AA-CFEE-4BE2-9E77-292A6FA543C6}
+		{264443E7-1601-4DB4-99D4-B669B32DADAE} = {C52349EF-706C-41B9-A1E4-0F2211A157F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06929A49-B43D-40A2-9983-F9BD3776123D}

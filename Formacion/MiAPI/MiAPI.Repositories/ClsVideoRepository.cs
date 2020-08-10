@@ -4,8 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using MiAPI.Business.Dtos;
-
-using MiAPI.Repositories.interfaces;
+using MiAPI.Business.IRepositories;
 
 namespace MiAPI.Repositories{
     public class ClsVideoRepository : IClsVideoRepository {
