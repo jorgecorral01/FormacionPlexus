@@ -20,7 +20,7 @@ namespace MiAPI.API.Controllers {
         [HttpGet("{name}")]
         public async Task<ActionResult<Video>> Get(string name){
             Video video =  await _clsVideoRepositoryFactory.CreateFindVideoAction().Execute(name);
-             if (video is null) return NotFound(new Video());
+             if (video is null || video is VideoNotFound) return NotFound(new Video{name = name});
              return Ok(video);
         }
 

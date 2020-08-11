@@ -30,13 +30,31 @@ namespace MiAPI.Api.Controllers.Test{
             var expectedVideo = ForGivenData(out var client, out var requestUri);
             
             var result = await client.GetAsync(requestUri);
-            var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
-            //var actualVideo = await FindVideo(client, requestUri);
 
+            var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
             actualVideo.Should().BeEquivalentTo(expectedVideo);
             result.StatusCode.Should().Be(HttpStatusCode.OK);
         }
-        
+
+        [Test]
+        public async Task should_return_not_found_when_we_ask_for_find_a_not_existing_video() {
+            var anyVideoThatNotExist = "Any video that not exist";
+            var expectedVideo = ForGivenNoExistingData(out var client, out var requestUri, anyVideoThatNotExist);
+
+            var result = await client.GetAsync(requestUri);
+            
+            result.StatusCode.Should().Be(HttpStatusCode.NotFound);
+            var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
+            actualVideo.name.Should().Be(anyVideoThatNotExist);
+        }
+
+        private object ForGivenNoExistingData(out HttpClient client , out string requestUri, string nombreVideoABuscar) {
+            var expectedVideo = new Video { format = "avi", name = nombreVideoABuscar };
+            client = new HttpClient();
+            requestUri = string.Format("http://localhost:35555/api/video/{0}", nombreVideoABuscar);
+            return expectedVideo;
+        }
+
         [Ignore("wip")]
         [Test]
         public async Task get_all_videos_and_users() {
