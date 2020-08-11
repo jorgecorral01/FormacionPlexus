@@ -1,19 +1,23 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using FluentAssertions;
 using MiAPI.Business.Dtos;
-using MiAPI.Infrastructure.SqlRepository;
+using MiAPI.Infrastucture.SqlMigrations.Test;
 using NUnit.Framework;
 
-namespace MiAPI.Infrastucture.SqlMigrations.Test {
+namespace MiAPI.Infrastructure.SqlRepository.Test {
     public class ClsVideoRepositorySqlShould :SqlTest {
+        private Video video;
+        private ClsVideoRepositorySql clsVideoRepositorySql;
+
+        [SetUp]
+        public void Setup() {
+            video = GivenAVideo();
+            clsVideoRepositorySql = new ClsVideoRepositorySql(ConnectionString);
+        }
         [Test]
         public void when_try_find_a_video_we_can_recover() {
             CleanVideoTable();
-            var video = GivenAVideo();
-            var clsVideoRepositorySql = new ClsVideoRepositorySql(ConnectionString);
             clsVideoRepositorySql.Add(video);
 
             var actualVideo = clsVideoRepositorySql.Find(video.name);
@@ -23,9 +27,6 @@ namespace MiAPI.Infrastucture.SqlMigrations.Test {
 
         [Test]
         public void should_return_video_not_found_when_try_find_a_video_and_not_exist() {
-            CleanVideoTable();
-            var video = GivenAVideo();
-            var clsVideoRepositorySql = new ClsVideoRepositorySql(ConnectionString);
 
             var actualVideo = clsVideoRepositorySql.Find(video.name);
 
@@ -35,8 +36,6 @@ namespace MiAPI.Infrastucture.SqlMigrations.Test {
         [Test]
         public void when_add_video_we_can_recover() {
             CleanVideoTable();
-            var video = GivenAVideo();
-            var clsVideoRepositorySql = new ClsVideoRepositorySql(ConnectionString);
 
             clsVideoRepositorySql.Add(video);
 
