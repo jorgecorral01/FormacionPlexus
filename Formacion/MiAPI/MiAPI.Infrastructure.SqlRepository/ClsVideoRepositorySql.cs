@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 using System.Threading.Tasks;
 using MiAPI.Business.Dtos;
 using MiAPI.Business.IRepositories;
@@ -22,12 +23,13 @@ namespace MiAPI.Infrastructure.SqlRepository{
             }
         }
 
-        public virtual Video Find(string name){
+        public virtual async  Task<Video> Find(string name){
                 var sqlDataAdapter = new SqlDataAdapter();
                 var dt = new DataTable();
                 System.Data.SqlClient.SqlDataAdapter da = new SqlDataAdapter(string.Format("Select * from Videos where name = '{0}'", name), _connectionString);
                 da.Fill(dt);
-                if (dt.Rows.Count == 0) return new VideoNotFound();
+                if (dt.Rows.Count == 0) throw new  VideoNotFoundException(name);
+                await Task.Delay(1);
                 return CreateNewVideoWithDT(dt);
         }
 

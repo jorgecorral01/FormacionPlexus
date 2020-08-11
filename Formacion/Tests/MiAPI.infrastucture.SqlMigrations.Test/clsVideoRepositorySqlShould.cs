@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using FluentAssertions;
 using MiAPI.Business.Dtos;
 using MiAPI.Infrastucture.SqlMigrations.Test;
@@ -26,11 +28,12 @@ namespace MiAPI.Infrastructure.SqlRepository.Test {
         }
 
         [Test]
-        public void should_return_video_not_found_when_try_find_a_video_and_not_exist() {
+        public void should_throw_video_not_found_exception_when_try_find_a_video_and_not_exist() {
+            
+            Func<Task> action = async () => await clsVideoRepositorySql.Find("AnyVideoName");
 
-            var actualVideo = clsVideoRepositorySql.Find(video.name);
-
-            actualVideo.Should().BeOfType<VideoNotFound>();
+            action.Should().ThrowExactly<VideoNotFoundException>()
+                .And.Name.Should().Be("AnyVideoName");
         }
 
         [Test]
