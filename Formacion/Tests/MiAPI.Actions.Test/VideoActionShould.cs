@@ -24,8 +24,8 @@ namespace MiAPI.Actions.Test {
 
         [Test]
         public void when_add_video_we_call_one_time_to_video_repository(){
-            var clsVideoRepositorySql = Substitute.For<ClsVideoRepositorySql>(new object[] { null });
-            var action = new AddVideoAction(clsVideoRepositorySql);
+            var clsVideoRepositorySql = GivenAClsVideoRepositorySqlMock();
+            var action = GivenAnAddAction(clsVideoRepositorySql);
             var newVideo = new Video { name = "aprendizaje", format = "avi" };
 
             action.Execute(newVideo);
@@ -33,5 +33,12 @@ namespace MiAPI.Actions.Test {
             clsVideoRepositorySql.Received(1).Add(newVideo);
         }
 
+        private static AddVideoAction GivenAnAddAction(ClsVideoRepositorySql clsVideoRepositorySql){
+            return new AddVideoAction(clsVideoRepositorySql);
+        }
+
+        private static ClsVideoRepositorySql GivenAClsVideoRepositorySqlMock(){
+            return Substitute.For<ClsVideoRepositorySql>(new object[] { null });
+        }
     }
 }
