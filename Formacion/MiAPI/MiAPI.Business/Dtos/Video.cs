@@ -3,4 +3,6 @@
         public string name{ get; set; }
         public string format{ get; set; }
     }
+
+    public class VideoNotFound : Video { }
 }

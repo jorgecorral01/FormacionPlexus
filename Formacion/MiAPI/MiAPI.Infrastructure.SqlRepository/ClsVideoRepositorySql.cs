@@ -27,6 +27,7 @@ namespace MiAPI.Infrastructure.SqlRepository{
                 var dt = new DataTable();
                 System.Data.SqlClient.SqlDataAdapter da = new SqlDataAdapter(string.Format("Select * from Videos where name = '{0}'", name), _connectionString);
                 da.Fill(dt);
+                if (dt.Rows.Count == 0) return new VideoNotFound();
                 return CreateNewVideoWithDT(dt);
         }
 
