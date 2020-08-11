@@ -1,21 +1,59 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using MiAPI.Business.Dtos;
 using MiAPI.Repositories;
-using MiAPI.Repositories.interfaces;
+using Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Discovery;
+using Newtonsoft.Json;
 using NSubstitute;
 using NUnit.Framework;
 
 namespace MiAPI.Api.Controllers.Test{
     public class VideoControllerShould{
+
         [Test]
-        public async Task when_we_ask_for_a_video_we_obtain(){
+        public async Task when_we_add_a_video_we_obtain_response_ok() {
+            var nombreVideoABuscar = "fiesta";
+            var expectedVideo = new Video { format = "avi", name = nombreVideoABuscar };
+            HttpClient client = new HttpClient();
+            var requestUri = string.Format("http://localhost:35555/api/video", nombreVideoABuscar);
+
+            string jsonVideo = JsonConvert.SerializeObject(expectedVideo, Formatting.Indented);
+
+            HttpContent content = new StringContent(jsonVideo, Encoding.UTF8, "application/json");
+            HttpRequestMessage request = new HttpRequestMessage {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(requestUri),
+                Content = content
+            };
+            var result =  await  client.PostAsync(requestUri, content);
+
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
+            //await client.ShouldResponse().Ok();
+        }
+
+        [Test]
+        public async Task when_we_ask_for_a_video_we_obtain() {
             var expectedVideo = ForGivenData(out var client, out var requestUri);
 
             var actualVideo = await FindVideo(client, requestUri);
 
             actualVideo.Should().BeEquivalentTo(expectedVideo);
+            //await client.ShouldResponse().Ok();
+        }
+        
+        [Ignore("wip")]
+        [Test]
+        public async Task get_all_videos_and_users() {
+            var expectedVideo = ForGivenData(out var client, out var requestUri);
+
+            var actualVideo = await FindVideo(client, requestUri);
+
+            actualVideo.Should().BeEquivalentTo(expectedVideo);
+            //await client.ShouldResponse().Ok();
         }
 
         private static Video ForGivenData(out HttpClient client, out string requestUri){

@@ -20,9 +20,17 @@ namespace MiAPI.API.Controllers {
         // GET api/video/name
         [HttpGet("{name}")]
         public async Task<ActionResult<Video>> Get(string name){
-             var video =  await _clsVideoRepositoryFactory.CreateFindVideoAction().Execute(name);
-             if (video is null) return Ok(new Video());
-             return video;
+            Video video = null; // TODO =  await _clsVideoRepositoryFactory.CreateFindVideoAction().Execute(name);
+             if (video is null) return NotFound(new Video());
+             return Ok(video);
+        }
+
+        // post api/video/
+        [HttpPost()]
+        public async Task<ActionResult> Post([FromBody] Video video) {
+            _clsVideoRepositoryFactory.CreateAddVideoAction().Execute(video);
+            
+            return Ok();
         }
     }
 }
