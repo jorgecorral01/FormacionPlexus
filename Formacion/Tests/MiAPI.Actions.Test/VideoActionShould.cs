@@ -11,15 +11,20 @@ namespace MiAPI.Actions.Test {
     public class VideoActionShould {
         [Test]
         public async Task   should_return_a_video_for_a_name(){
-            var videoRepository = new ClsVideoRepository();
+            var name = "peli1";
+            var expectVideo = new Video { name = name, format = "avi" };
+            var videoRepository = GivenAClsVideoRepositorySqlMock();
+            SetVideoReturnForVideoRepositoryMock(videoRepository, name, expectVideo);
             var action = new FindVideoAction(videoRepository);
-            var nombre = "peli1";
-            var expectVideo = new Video { name = nombre, format = "avi" };
-            videoRepository.Add(expectVideo);
 
-            var actualvideo = action.Execute(nombre);
+            var actualvideo = action.Execute(name);
             
             actualvideo.Should().BeEquivalentTo(expectVideo);
+            videoRepository.Received(1).Find(name);
+        }
+
+        private static void SetVideoReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name, Video expectVideo){
+            videoRepository.Find(name).Returns(expectVideo);
         }
 
         [Test]

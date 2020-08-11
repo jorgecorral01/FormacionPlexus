@@ -22,7 +22,7 @@ namespace MiAPI.Infrastructure.SqlRepository{
             }
         }
 
-        public Video Find(string name){
+        public virtual Video Find(string name){
                 var sqlDataAdapter = new SqlDataAdapter();
                 var dt = new DataTable();
                 System.Data.SqlClient.SqlDataAdapter da = new SqlDataAdapter(string.Format("Select * from Videos where name = '{0}'", name), _connectionString);
