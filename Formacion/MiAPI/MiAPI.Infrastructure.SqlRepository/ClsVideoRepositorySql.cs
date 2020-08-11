@@ -27,8 +27,11 @@ namespace MiAPI.Infrastructure.SqlRepository{
                 var dt = new DataTable();
                 System.Data.SqlClient.SqlDataAdapter da = new SqlDataAdapter(string.Format("Select * from Videos where name = '{0}'", name), _connectionString);
                 da.Fill(dt);
-                var newVideo = new Video{name = dt.Rows[0]["name"].ToString(), format = dt.Rows[0]["format"].ToString() };
-                return newVideo;
+                return CreateNewVideoWithDT(dt);
+        }
+
+        private static Video CreateNewVideoWithDT(DataTable dt){
+            return new Video{name = dt.Rows[0]["name"].ToString(), format = dt.Rows[0]["format"].ToString() };
         }
     }
 }
