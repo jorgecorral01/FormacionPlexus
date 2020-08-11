@@ -12,8 +12,8 @@ namespace MiAPI.Actions {
             _clsVideoRepository = clsVideoRepository;
         }
 
-        public async Task<Video> Execute(string name){
-            return await _clsVideoRepository.Find(name);
+        public Video Execute(string name){
+            return _clsVideoRepository.Find(name);
         }
     }
 }

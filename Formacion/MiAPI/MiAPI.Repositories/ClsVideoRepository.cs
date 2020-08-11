@@ -17,8 +17,8 @@ namespace MiAPI.Repositories{
             LisTVideos.Add(newVideo);
         }
 
-        public virtual async Task<Video> Find(string name){
-            await Task.Delay(1);
+        public virtual Video Find(string name){
+            
             return LisTVideos.FirstOrDefault(item => item.name == name);
         }
 

@@ -17,7 +17,7 @@ namespace MiAPI.Actions.Test {
             var expectVideo = new Video { name = nombre, format = "avi" };
             videoRepository.Add(expectVideo);
 
-            var actualvideo = await action.Execute(nombre);
+            var actualvideo = action.Execute(nombre);
             
             actualvideo.Should().BeEquivalentTo(expectVideo);
         }

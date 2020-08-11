@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using MiAPI.Business.Dtos;
 using MiAPI.Business.IRepositories;
@@ -21,8 +22,13 @@ namespace MiAPI.Infrastructure.SqlRepository{
             }
         }
 
-        public Task<Video> Find(string name){
-            throw new System.NotImplementedException();
+        public Video Find(string name){
+                var sqlDataAdapter = new SqlDataAdapter();
+                var dt = new DataTable();
+                System.Data.SqlClient.SqlDataAdapter da = new SqlDataAdapter(string.Format("Select * from Videos where name = '{0}'", name), _connectionString);
+                da.Fill(dt);
+                var newVideo = new Video{name = dt.Rows[0]["name"].ToString(), format = dt.Rows[0]["format"].ToString() };
+                return newVideo;
         }
     }
 }

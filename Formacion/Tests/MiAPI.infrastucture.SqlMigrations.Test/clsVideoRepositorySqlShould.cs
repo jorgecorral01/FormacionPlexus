@@ -10,7 +10,19 @@ using NUnit.Framework;
 namespace MiAPI.Infrastucture.SqlMigrations.Test {
     public class ClsVideoRepositorySqlShould :SqlTest {
         [Test]
-        public void when_add_video_we_can_recover(){
+        public void when_try_find_a_video_we_can_recover() {
+            CleanVideoTable();
+            var video = GivenAVideo();
+            var clsVideoRepositorySql = new ClsVideoRepositorySql(ConnectionString);
+            clsVideoRepositorySql.Add(video);
+
+            var actualVideo = clsVideoRepositorySql.Find(video.name);
+
+            actualVideo.Should().BeEquivalentTo(video);
+        }
+
+        [Test]
+        public void when_add_video_we_can_recover() {
             CleanVideoTable();
             var video = GivenAVideo();
             var clsVideoRepositorySql = new ClsVideoRepositorySql(ConnectionString);

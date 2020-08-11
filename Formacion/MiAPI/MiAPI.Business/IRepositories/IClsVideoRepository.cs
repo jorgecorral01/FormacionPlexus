@@ -4,6 +4,6 @@ using MiAPI.Business.Dtos;
 namespace MiAPI.Business.IRepositories{
     public interface IClsVideoRepository{
         void Add(Video newVideo);
-        Task<Video> Find(string name);
+        Video Find(string name);
     }
 }
