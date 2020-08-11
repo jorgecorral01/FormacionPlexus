@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kata1\Katas.csproj" />
-    <ProjectReference Include="..\MiAPI\MiAPI.Repositories\MiAPI.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

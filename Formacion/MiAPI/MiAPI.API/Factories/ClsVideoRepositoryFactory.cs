@@ -1,7 +1,6 @@
 ﻿using MiAPI.Actions;
 using MiAPI.Business.IRepositories;
 using MiAPI.Infrastructure.SqlRepository;
-using MiAPI.Repositories;
 
 namespace MiAPI.API.Factories{
     public class ClsVideoRepositoryFactory{

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using MiAPI.Business.Dtos;
-using MiAPI.Repositories;
 using Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Discovery;
 using Newtonsoft.Json;
 using NSubstitute;

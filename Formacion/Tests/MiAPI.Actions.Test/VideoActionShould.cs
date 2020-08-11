@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using MiAPI.Business.Dtos;
 using MiAPI.Infrastructure.SqlRepository;
-using MiAPI.Repositories;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -21,6 +20,23 @@ namespace MiAPI.Actions.Test {
             
             actualvideo.Should().BeEquivalentTo(expectVideo);
             videoRepository.Received(1).Find(name);
+        }
+
+        [Test]
+        public async Task should_return_video_not_found_exception_when_video_not_exist_for_a_name() {
+            var name = "peli1";
+            var videoRepository = GivenAClsVideoRepositorySqlMock();
+            SetVideoNotFoundReturnForVideoRepositoryMock(videoRepository, name );
+            var action = new FindVideoAction(videoRepository);
+
+            action.Execute(name);
+
+            
+            videoRepository.Received(1).Find(name);
+        }
+
+        private void SetVideoNotFoundReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name){
+            //videoRepository.Find(name).Returns(new VideoNotFound());
         }
 
         private static void SetVideoReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name, Video expectVideo){

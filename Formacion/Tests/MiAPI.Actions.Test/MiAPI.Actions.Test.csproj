@@ -15,7 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\MiAPI\MiAPI.Actions\MiAPI.Actions.csproj" />
     <ProjectReference Include="..\..\MiAPI\MiAPI.Infrastructure.SqlRepository\MiAPI.Infrastructure.SqlRepository.csproj" />
-    <ProjectReference Include="..\..\MiAPI\MiAPI.Repositories\MiAPI.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

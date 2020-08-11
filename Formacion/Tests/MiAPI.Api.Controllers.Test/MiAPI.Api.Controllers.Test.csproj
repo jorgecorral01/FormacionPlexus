@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MiAPI\MiAPI.Business\MiAPI.Business.csproj" />
-    <ProjectReference Include="..\..\MiAPI\MiAPI.Repositories\MiAPI.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

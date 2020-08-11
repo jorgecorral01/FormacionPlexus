@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using MiAPI.Business.Dtos;
 using MiAPI.Business.IRepositories;
-using MiAPI.Repositories;
 
 namespace MiAPI.Actions {
     public class FindVideoAction {
@@ -12,8 +11,8 @@ namespace MiAPI.Actions {
             _clsVideoRepository = clsVideoRepository;
         }
 
-        public Video Execute(string name){
-            return _clsVideoRepository.Find(name);
+        public async Task<Video> Execute(string name){
+            return await _clsVideoRepository.Find(name);
         }
     }
 }
