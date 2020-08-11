@@ -16,10 +16,10 @@ namespace MiAPI.Actions.Test {
             SetVideoReturnForVideoRepositoryMock(videoRepository, name, expectVideo);
             var action = new FindVideoAction(videoRepository);
 
-            var actualvideo = action.Execute(name);
+            var actualvideo = await action.Execute(name);
             
             actualvideo.Should().BeEquivalentTo(expectVideo);
-            videoRepository.Received(1).Find(name);
+            await videoRepository.Received(1).Find(name);
         }
 
         [Test]
