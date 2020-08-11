@@ -18,11 +18,11 @@ namespace MiAPI.Infrastructure.SqlRepository.Test {
             clsVideoRepositorySql = new ClsVideoRepositorySql(ConnectionString);
         }
         [Test]
-        public void when_try_find_a_video_we_can_recover() {
+        public async Task when_try_find_a_video_we_can_recover() {
             CleanVideoTable();
             clsVideoRepositorySql.Add(video);
 
-            var actualVideo = clsVideoRepositorySql.Find(video.name);
+            var actualVideo = await clsVideoRepositorySql.Find(video.name);
 
             actualVideo.Should().BeEquivalentTo(video);
         }
