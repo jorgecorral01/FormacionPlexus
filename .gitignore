@@ -667,3 +667,11 @@ Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/runtimes/win-x86/nati
 Formacion/MiAPI/MiAPI.API/bin/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.dll
 Formacion/MiAPI/MiAPI.API/bin/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.pdb
 Formacion/Formacion.sln.DotSettings.user
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/MiAPI.Infrastructure.SqlRepository.Test.csproj.nuget.cache
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/MiAPI.Infrastructure.SqlRepository.Test.csproj.nuget.dgspec.json
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/MiAPI.Infrastructure.SqlRepository.Test.csproj.nuget.g.props
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/MiAPI.Infrastructure.SqlRepository.Test.csproj.nuget.g.targets
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.Test.AssemblyInfo.cs
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.Test.AssemblyInfoInputs.cache
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.Test.assets.cache
+Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.Test.csprojAssemblyReference.cache

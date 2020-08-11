@@ -8,7 +8,7 @@ using MiAPI.Infrastructure.SqlRepository;
 using NUnit.Framework;
 
 namespace MiAPI.Infrastucture.SqlMigrations.Test {
-    public class clsVideoRepositorySqlShould :SqlTest {
+    public class ClsVideoRepositorySqlShould :SqlTest {
         [Test]
         public void when_add_video_we_can_recover(){
             using(SqlConnection connection = new SqlConnection(
