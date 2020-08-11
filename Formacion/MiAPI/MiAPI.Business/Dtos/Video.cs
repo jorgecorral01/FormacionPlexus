@@ -6,6 +6,13 @@ namespace MiAPI.Business.Dtos{
         public string format{ get; set; }
     }
 
+
+    public class VideoNotFound : Video{
+        public VideoNotFound(string errname){
+            name = errname;
+        }
+    }
+
     public class VideoNotFoundException : Exception{
         public readonly string Name;
         

@@ -4,6 +4,7 @@ using FluentAssertions;
 using MiAPI.Business.Dtos;
 using MiAPI.Infrastructure.SqlRepository;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 
 namespace MiAPI.Actions.Test {
@@ -23,20 +24,20 @@ namespace MiAPI.Actions.Test {
         }
 
         [Test]
-        public async Task should_return_video_not_found_exception_when_video_not_exist_for_a_name() {
+        public async Task should_return_video_not_found_when_video_not_exist_for_a_name() {
             var name = "peli1";
             var videoRepository = GivenAClsVideoRepositorySqlMock();
             SetVideoNotFoundReturnForVideoRepositoryMock(videoRepository, name );
             var action = new FindVideoAction(videoRepository);
 
-            action.Execute(name);
+            var actualVideo = await  action.Execute(name);
 
-            
-            videoRepository.Received(1).Find(name);
+            actualVideo.Should().BeOfType<VideoNotFound>().Which.name.Should().Be(name);
+            await videoRepository.Received(1).Find(name);
         }
 
         private void SetVideoNotFoundReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name){
-            //videoRepository.Find(name).Returns(new VideoNotFound());
+            videoRepository.Find(name).Throws(new VideoNotFoundException(name));
         }
 
         private static void SetVideoReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name, Video expectVideo){

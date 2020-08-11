@@ -12,7 +12,13 @@ namespace MiAPI.Actions {
         }
 
         public async Task<Video> Execute(string name){
-            return await _clsVideoRepository.Find(name);
+            try{
+                return await _clsVideoRepository.Find(name);
+            }
+            catch (VideoNotFoundException e){
+                return new VideoNotFound(e.Name);
+            }
+            
         }
     }
 }
