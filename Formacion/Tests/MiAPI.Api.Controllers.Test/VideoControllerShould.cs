@@ -16,23 +16,29 @@ namespace MiAPI.Api.Controllers.Test{
 
         [Test]
         public async Task when_we_add_a_video_we_obtain_response_ok() {
-            var nombreVideoABuscar = "fiesta";
-            var expectedVideo = new Video { format = "avi", name = nombreVideoABuscar };
+            GivenAVideo(out var expectedVideo);
             HttpClient client = new HttpClient();
-            var requestUri = string.Format("http://localhost:35555/api/video", nombreVideoABuscar);
+            var requestUri = "http://localhost:35555/api/video";
+            var content = GivenAHttpContent(expectedVideo, requestUri);
 
+            var result =  await  client.PostAsync(requestUri, content);
+
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        private static void GivenAVideo(out Video expectedVideo){
+            expectedVideo = new Video{format = "avi", name = "fiesta" };
+        }
+
+        private static HttpContent GivenAHttpContent(Video expectedVideo, string requestUri){
             string jsonVideo = JsonConvert.SerializeObject(expectedVideo, Formatting.Indented);
-
             HttpContent content = new StringContent(jsonVideo, Encoding.UTF8, "application/json");
-            HttpRequestMessage request = new HttpRequestMessage {
+            HttpRequestMessage request = new HttpRequestMessage{
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(requestUri),
                 Content = content
             };
-            var result =  await  client.PostAsync(requestUri, content);
-
-            result.StatusCode.Should().Be(HttpStatusCode.OK);
-            //await client.ShouldResponse().Ok();
+            return content;
         }
 
         [Test]
