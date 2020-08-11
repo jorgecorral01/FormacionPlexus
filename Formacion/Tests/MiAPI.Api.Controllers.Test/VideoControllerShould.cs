@@ -25,29 +25,16 @@ namespace MiAPI.Api.Controllers.Test{
             result.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
-        private static void GivenAVideo(out Video expectedVideo){
-            expectedVideo = new Video{format = "avi", name = "fiesta" };
-        }
-
-        private static HttpContent GivenAHttpContent(Video expectedVideo, string requestUri){
-            string jsonVideo = JsonConvert.SerializeObject(expectedVideo, Formatting.Indented);
-            HttpContent content = new StringContent(jsonVideo, Encoding.UTF8, "application/json");
-            HttpRequestMessage request = new HttpRequestMessage{
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(requestUri),
-                Content = content
-            };
-            return content;
-        }
-
         [Test]
-        public async Task when_we_ask_for_a_video_we_obtain() {
+        public async Task when_we_ask_for_find_a_video_we_obtain() {
             var expectedVideo = ForGivenData(out var client, out var requestUri);
-
-            var actualVideo = await FindVideo(client, requestUri);
+            
+            var result = await client.GetAsync(requestUri);
+            var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
+            //var actualVideo = await FindVideo(client, requestUri);
 
             actualVideo.Should().BeEquivalentTo(expectedVideo);
-            //await client.ShouldResponse().Ok();
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
         }
         
         [Ignore("wip")]
@@ -73,6 +60,21 @@ namespace MiAPI.Api.Controllers.Test{
             var result = await client.GetAsync(requestUri);
             var actualVideo = Newtonsoft.Json.JsonConvert.DeserializeObject<Video>(result.Content.ReadAsStringAsync().Result);
             return actualVideo;
+        }
+
+        private static void GivenAVideo(out Video expectedVideo) {
+            expectedVideo = new Video { format = "avi", name = "fiesta" };
+        }
+
+        private static HttpContent GivenAHttpContent(Video expectedVideo, string requestUri) {
+            string jsonVideo = JsonConvert.SerializeObject(expectedVideo, Formatting.Indented);
+            HttpContent content = new StringContent(jsonVideo, Encoding.UTF8, "application/json");
+            HttpRequestMessage request = new HttpRequestMessage {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(requestUri),
+                Content = content
+            };
+            return content;
         }
     }
 }

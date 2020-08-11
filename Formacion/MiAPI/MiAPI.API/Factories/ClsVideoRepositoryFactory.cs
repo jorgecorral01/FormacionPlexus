@@ -12,8 +12,6 @@ namespace MiAPI.API.Factories{
 
         public FindVideoAction CreateFindVideoAction(){
             return  new FindVideoAction(new ClsVideoRepositorySql(_connectionString));
-            //return new FindVideoAction(_clsVideoRepository);
-            //return _clsVideoRepository.Find();
         }
 
         public AddVideoAction CreateAddVideoAction(){
