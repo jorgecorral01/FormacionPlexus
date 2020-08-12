@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MiAPI.API.Factories;
+using MiAPI.API.swagger;
 using MiAPI.Business.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 
 namespace MiAPI.API.Controllers {
     [Route("api/[controller]")]
     [ApiController]
     public class VideoController : ControllerBase{
+
+        public static void Convention(ApiVersioningOptions options) {
+            options.Conventions.Controller<VideoController>().HasApiVersions(ApiVersioning.Versions());
+        }
+
         private readonly ClsVideoRepositoryFactory _clsVideoRepositoryFactory;
         
         public VideoController(ClsVideoRepositoryFactory clsVideoRepositoryFactory){

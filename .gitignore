@@ -687,3 +687,12 @@ Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/Debug/netcoreapp2.2/M
 Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.Test.genruntimeconfig.cache
 Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/obj/Debug/netcoreapp2.2/MiAPI.Infrastructure.SqlRepository.Test.pdb
 Formacion/.vs/Formacion/DesignTimeBuild/.dtbcache
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/Remotion.Linq.dll
+Formacion/Tests/MiAPI.Actions.Test/bin/Debug/netcoreapp3.1/System.Interactive.Async.dll
