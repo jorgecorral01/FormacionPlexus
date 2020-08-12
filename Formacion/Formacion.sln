@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.Actions.Test", "Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.infrastucture.SqlMigrations", "MiAPI\MiAPI.Migrations\MiAPI.infrastucture.SqlMigrations.csproj", "{B2A6534E-EF94-428A-9CDF-C126E6A4065D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiAPI.Infrastructure.SqlRepository", "MiAPI\MiAPI.Infrastructure.SqlRepository\MiAPI.Infrastructure.SqlRepository.csproj", "{FD190A90-1720-4B07-95FB-4F955F7C05AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.Infrastructure.Repository", "MiAPI\MiAPI.Infrastructure.SqlRepository\MiAPI.Infrastructure.Repository.csproj", "{FD190A90-1720-4B07-95FB-4F955F7C05AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiAPI.Infrastructure.SqlRepository.Test", "Tests\MiAPI.infrastucture.SqlMigrations.Test\MiAPI.Infrastructure.SqlRepository.Test.csproj", "{264443E7-1601-4DB4-99D4-B669B32DADAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.Infrastructure.SqlRepository.Test", "Tests\MiAPI.infrastucture.SqlMigrations.Test\MiAPI.Infrastructure.SqlRepository.Test.csproj", "{264443E7-1601-4DB4-99D4-B669B32DADAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
