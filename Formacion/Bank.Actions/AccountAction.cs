@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Bank.Actions.Dtos;
+using MiAPI.Business.Exceptions;
 
 namespace Bank.Actions {
 
@@ -8,7 +10,9 @@ namespace Bank.Actions {
             return new Account{Dni = dni, Balance = 0};
         }
 
-        public Account AddAmount(Account account, double amount){
+        public async Task<Account> AddAmount(Account account, double amount){
+            if (amount <= 0){ throw new AmountException();}
+            await Task.Delay(1);
             account.Balance += amount;
             return account;
         }

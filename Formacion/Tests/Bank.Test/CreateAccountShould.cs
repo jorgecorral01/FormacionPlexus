@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Bank.Actions;
 using Bank.Actions.Dtos;
 using FluentAssertions;
+using MiAPI.Business.Exceptions;
 using NUnit.Framework;
 
 namespace Bank.Test {
@@ -21,13 +23,24 @@ namespace Bank.Test {
 
         [TestCase("A1", 10000, 500)]
         [TestCase("A2", 500000,400)]
-        public void when_we_add_amount_to_account_we_have_the_sum_with_balance(string dni, Double actualBalance,  double amount) {
+        public async Task when_we_add_amount_to_account_we_have_the_sum_with_balance(string dni, Double actualBalance,  double amount) {
             var accountAction = GivenAnAccount(out var newAccount, actualBalance, out var initialBalance, dni);
 
-            var actualAccount = accountAction.AddAmount(newAccount, amount);
+            var actualAccount = await accountAction.AddAmount(newAccount, amount);
 
             actualAccount.Balance.Should().Be(initialBalance + amount);
             
+
+        }
+
+        [Test]
+        public void when_we_add_negative_amount_we_have_a_amount_exception(){
+            var accountAction = GivenAnAccount(out var newAccount, 4000, out var initialBalance, "1r");
+
+            var amount = -1100;
+            Func<Task> action = async () => await accountAction.AddAmount(newAccount, amount);
+
+            action.Should().ThrowExactly<AmountException>();
 
         }
 
