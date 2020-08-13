@@ -19,10 +19,10 @@ namespace Bank.Test {
         }
 
 
-        [Test]
-        public void when_we_add_amount_to_account_we_have_the_sum_with_balance() {
-            var accountAction = GivenAnAccount(out var newAccount, out var initialBalance);
-            var amount = 100;
+        [TestCase("A1", 10000, 500)]
+        [TestCase("A2", 500000,400)]
+        public void when_we_add_amount_to_account_we_have_the_sum_with_balance(string dni, Double actualBalance,  double amount) {
+            var accountAction = GivenAnAccount(out var newAccount, actualBalance, out var initialBalance, dni);
 
             var actualAccount = accountAction.AddAmount(newAccount, amount);
 
@@ -31,9 +31,9 @@ namespace Bank.Test {
 
         }
 
-        private static AccountAction GivenAnAccount(out Account newAccount, out double initialBalance){
-            var dni = "anyDni";
+        private static AccountAction GivenAnAccount(out Account newAccount, double actualBalance, out double initialBalance, string dni){
             var accountAction = CreateAnAccount(out newAccount, dni);
+            newAccount.Balance = actualBalance;
             initialBalance = newAccount.Balance;
             return accountAction;
         }
