@@ -7,7 +7,8 @@ using MiAPI.Business.Exceptions;
 using NUnit.Framework;
 
 namespace Bank.Test {
-    public class CreateAccountShould {
+    public class AccountShould {
+
         [Test]
         public void when_we_create_account_we_have_an_account_with_zero_balance(){
             var dni = "anyDni";
@@ -36,14 +37,26 @@ namespace Bank.Test {
         [Test]
         public void when_we_add_negative_amount_we_have_a_amount_exception(){
             var accountAction = GivenAnAccount(out var newAccount, 4000, out var initialBalance, "1r");
-
             var amount = -1100;
+            
             Func<Task> action = async () => await accountAction.AddAmount(newAccount, amount);
 
-            action.Should().ThrowExactly<AmountException>();
+            action.Should().ThrowExactly<AmountException>().Which.MessageError.Should().Be("The amount must be greater than zero");
 
         }
 
+        [TestCase(1100.111D)]
+        [TestCase(1100.1111D)]
+        public void when_we_add_amount_without_two_decimals_we_have_a_amount_exception(double amount) {
+            var accountAction = GivenAnAccount(out var newAccount, 4000, out var initialBalance, "1r");
+            
+
+            Func<Task> action = async () => await accountAction.AddAmount(newAccount, amount);
+
+            action.Should().ThrowExactly<AmountException>().Which.MessageError.Should().Be("The amount must be have two decimals");
+
+        }
+        
         private static AccountAction GivenAnAccount(out Account newAccount, double actualBalance, out double initialBalance, string dni){
             var accountAction = CreateAnAccount(out newAccount, dni);
             newAccount.Balance = actualBalance;

@@ -33,11 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.Infrastructure.Reposi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiAPI.Infrastructure.SqlRepository.Test", "Tests\MiAPI.infrastucture.SqlMigrations.Test\MiAPI.Infrastructure.SqlRepository.Test.csproj", "{264443E7-1601-4DB4-99D4-B669B32DADAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Actions.Test", "Tests\Bank.Test\Bank.Actions.Test.csproj", "{253C64F8-8DA2-4A77-AE7E-C20A31D3D185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Actions.Test", "Tests\Bank.Test\Bank.Actions.Test.csproj", "{253C64F8-8DA2-4A77-AE7E-C20A31D3D185}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bank", "Bank", "{954E581A-FE11-4F1C-8889-88320EE10F5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Actions", "Bank.Actions\Bank.Actions.csproj", "{6A0C2E49-60F2-40F8-A73F-96BB4E18CFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Actions", "Bank.Actions\Bank.Actions.csproj", "{6A0C2E49-60F2-40F8-A73F-96BB4E18CFFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
