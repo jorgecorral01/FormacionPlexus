@@ -13,6 +13,7 @@ namespace Bank.Actions {
         public async Task<Account> AddAmount(Account account, double amount){
             if (amount <= 0){ throw new AmountException("The amount must be greater than zero");}
             if (HasGoodDecimals(amount) ) { throw new AmountException("The amount must be have two decimals"); }
+            if (amount > 6000) { throw new AmountException("The amount mustn't greater than 6000€"); }
             await Task.Delay(1);
             account.Balance += amount;
             return account;

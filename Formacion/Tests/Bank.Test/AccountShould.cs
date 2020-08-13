@@ -56,7 +56,18 @@ namespace Bank.Test {
             action.Should().ThrowExactly<AmountException>().Which.MessageError.Should().Be("The amount must be have two decimals");
 
         }
-        
+
+        [Test]
+        public void when_we_add_amount_greater_than_6000_we_have_a_amount_exception() {
+            var accountAction = GivenAnAccount(out var newAccount, 4000, out var initialBalance, "1r");
+            double amount = 6000.1D;
+
+            Func<Task> action = async () => await accountAction.AddAmount(newAccount, amount);
+
+            action.Should().ThrowExactly<AmountException>().Which.MessageError.Should().Be("The amount mustn't greater than 6000€");
+
+        }
+
         private static AccountAction GivenAnAccount(out Account newAccount, double actualBalance, out double initialBalance, string dni){
             var accountAction = CreateAnAccount(out newAccount, dni);
             newAccount.Balance = actualBalance;
