@@ -59,20 +59,51 @@ namespace MiAPI.Actions.Test {
 
         [Test]
         public void when_we_request_all_the_videos_and_users_we_recover_the_data(){
-            var Videos = new List<Video>{new Video{name = "Video1", format = "avi"}};
-            var users = new List<User> { new User { Name = "Pedro", Surname = "Pedro1" } };
-            var videoRepository = GivenAClsVideoRepositorySqlMock();
-            var userRepository = Substitute.For<ClsUserRepositorySql>();
-            videoRepository.GetAll().Returns(Videos);
-            userRepository.GetAll().Returns(users);
+            var expectedVideo = new Video{name = "Video1", format = "avi"};
+            var Videos = new List<Video>{expectedVideo};
+            var expectedUser = new User { Name = "Pedro", Surname = "Pedro1" };
+            var users = new List<User>{expectedUser};
+            var videoRepository = GivenVideoRepositoryWithDataReturn(Videos);
+            var userRepository = GivenUserRepositoryWithDataReturn(users);
             var videoAction = new GetAllVideosAndUserAction(videoRepository, userRepository);
 
             var actualDataList = videoAction.Execute();
 
+            ValidateResult(actualDataList, expectedVideo, expectedUser, videoRepository, userRepository);
+        }
+
+        private static void ValidateResult(DataList actualDataList, Video expectedVideo, User expectedUser, ClsVideoRepositorySql videoRepository,
+            ClsUserRepositorySql userRepository){
             actualDataList.Videos.Should().HaveCount(1);
+            actualDataList.Videos[0].Should().BeEquivalentTo(expectedVideo);
             actualDataList.Users.Should().HaveCount(1);
+            actualDataList.Users[0].Should().BeEquivalentTo(expectedUser);
             videoRepository.Received(1).GetAll();
             userRepository.Received(1).GetAll();
+        }
+
+        private static ClsUserRepositorySql GivenUserRepositoryWithDataReturn(List<User> users){
+            var userRepository = GivenAClsUserRepositorySqlMock();
+            GivenDataReturnForUserRepositoryMockGetAll(userRepository, users);
+            return userRepository;
+        }
+
+        private static ClsVideoRepositorySql GivenVideoRepositoryWithDataReturn(List<Video> Videos){
+            var videoRepository = GivenAClsVideoRepositorySqlMock();
+            GivenDataReturnForVideoRepositoryMockGetAll(videoRepository, Videos);
+            return videoRepository;
+        }
+
+        private static void GivenDataReturnForUserRepositoryMockGetAll(ClsUserRepositorySql userRepository, List<User> users){
+            userRepository.GetAll().Returns(users);
+        }
+
+        private static ClsUserRepositorySql GivenAClsUserRepositorySqlMock(){
+            return Substitute.For<ClsUserRepositorySql>();
+        }
+
+        private static void GivenDataReturnForVideoRepositoryMockGetAll(ClsVideoRepositorySql videoRepository, List<Video> Videos){
+            videoRepository.GetAll().Returns(Videos);
         }
 
         private static AddVideoAction GivenAnAddAction(ClsVideoRepositorySql clsVideoRepositorySql){
