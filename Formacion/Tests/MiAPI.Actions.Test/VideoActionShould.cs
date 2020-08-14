@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
 using MiAPI.Business.Dtos;
+using MiAPI.Infrastructure.Repository;
 using MiAPI.Infrastructure.SqlRepository;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
@@ -53,6 +55,24 @@ namespace MiAPI.Actions.Test {
             action.Execute(newVideo);
 
             clsVideoRepositorySql.Received(1).Add(newVideo);
+        }
+
+        [Test]
+        public void when_we_request_all_the_videos_and_users_we_recover_the_data(){
+            var Videos = new List<Video>{new Video{name = "Video1", format = "avi"}};
+            var users = new List<User> { new User { Name = "Pedro", Surname = "Pedro1" } };
+            var videoRepository = GivenAClsVideoRepositorySqlMock();
+            var userRepository = Substitute.For<ClsUserRepositorySql>();
+            videoRepository.GetAll().Returns(Videos);
+            userRepository.GetAll().Returns(users);
+            var videoAction = new GetAllVideosAndUserAction(videoRepository, userRepository);
+
+            var actualDataList = videoAction.Execute();
+
+            actualDataList.Videos.Should().HaveCount(1);
+            actualDataList.Users.Should().HaveCount(1);
+            videoRepository.Received(1).GetAll();
+            userRepository.Received(1).GetAll();
         }
 
         private static AddVideoAction GivenAnAddAction(ClsVideoRepositorySql clsVideoRepositorySql){

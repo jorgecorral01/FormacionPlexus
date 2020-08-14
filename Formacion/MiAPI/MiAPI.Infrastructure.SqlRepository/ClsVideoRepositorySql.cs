@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,6 +36,10 @@ namespace MiAPI.Infrastructure.SqlRepository{
 
         private static Video CreateNewVideoWithDT(DataTable dt){
             return new Video{name = dt.Rows[0]["name"].ToString(), format = dt.Rows[0]["format"].ToString() };
+        }
+
+        public virtual List<Video> GetAll(){
+            throw new System.NotImplementedException();
         }
     }
 }
