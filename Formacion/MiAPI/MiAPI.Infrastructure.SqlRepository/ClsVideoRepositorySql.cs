@@ -39,7 +39,7 @@ namespace MiAPI.Infrastructure.SqlRepository{
         }
 
         public virtual List<Video> GetAll(){
-            throw new System.NotImplementedException();
+            return new List<Video>();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MiAPI.Actions;
 using MiAPI.API.Factories;
 using MiAPI.API.swagger;
 using MiAPI.Business.Dtos;
@@ -42,6 +43,15 @@ namespace MiAPI.API.Controllers {
             _clsVideoRepositoryFactory.CreateAddVideoAction().Execute(video);
             
             return Ok();
+        }
+
+        [Route("VideosAndUsers")]
+        [HttpGet()] 
+        public async Task<ActionResult<DataList>> VideosAndUsers(){
+
+            DataList dataList = await _clsVideoRepositoryFactory.CreateGetAllVideosAndUserAction().Execute();
+            
+            return Ok(dataList);
         }
     }
 }

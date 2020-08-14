@@ -5,7 +5,7 @@ using MiAPI.Business.IRepositories;
 namespace MiAPI.Infrastructure.Repository{
     public class ClsUserRepositorySql: IClsUserRepository {
         public virtual List<User> GetAll(){
-            throw new System.NotImplementedException();
+            return new List<User>();
         }
     }
 }

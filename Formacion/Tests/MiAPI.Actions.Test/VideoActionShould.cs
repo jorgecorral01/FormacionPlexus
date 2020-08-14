@@ -38,16 +38,8 @@ namespace MiAPI.Actions.Test {
             await videoRepository.Received(1).Find(name);
         }
 
-        private void SetVideoNotFoundReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name){
-            videoRepository.Find(name).Throws(new VideoNotFoundException(name));
-        }
-
-        private static void SetVideoReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name, Video expectVideo){
-            videoRepository.Find(name).Returns(expectVideo);
-        }
-
         [Test]
-        public void when_add_video_we_call_one_time_to_video_repository(){
+        public void when_add_video_we_call_one_time_to_video_repository() {
             var clsVideoRepositorySql = GivenAClsVideoRepositorySqlMock();
             var action = GivenAnAddAction(clsVideoRepositorySql);
             var newVideo = new Video { name = "aprendizaje", format = "avi" };
@@ -58,19 +50,29 @@ namespace MiAPI.Actions.Test {
         }
 
         [Test]
-        public void when_we_request_all_the_videos_and_users_we_recover_the_data(){
-            var expectedVideo = new Video{name = "Video1", format = "avi"};
-            var Videos = new List<Video>{expectedVideo};
+        public async Task when_we_request_all_the_videos_and_users_we_recover_the_data() {
+            var expectedVideo = new Video { name = "Video1", format = "avi" };
+            var Videos = new List<Video> { expectedVideo };
             var expectedUser = new User { Name = "Pedro", Surname = "Pedro1" };
-            var users = new List<User>{expectedUser};
+            var users = new List<User> { expectedUser };
             var videoRepository = GivenVideoRepositoryWithDataReturn(Videos);
             var userRepository = GivenUserRepositoryWithDataReturn(users);
             var videoAction = new GetAllVideosAndUserAction(videoRepository, userRepository);
 
-            var actualDataList = videoAction.Execute();
+            var actualDataList = await videoAction.Execute();
 
             ValidateResult(actualDataList, expectedVideo, expectedUser, videoRepository, userRepository);
         }
+
+        private void SetVideoNotFoundReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name){
+            videoRepository.Find(name).Throws(new VideoNotFoundException(name));
+        }
+
+        private static void SetVideoReturnForVideoRepositoryMock(ClsVideoRepositorySql videoRepository, string name, Video expectVideo){
+            videoRepository.Find(name).Returns(expectVideo);
+        }
+
+       
 
         private static void ValidateResult(DataList actualDataList, Video expectedVideo, User expectedUser, ClsVideoRepositorySql videoRepository,
             ClsUserRepositorySql userRepository){

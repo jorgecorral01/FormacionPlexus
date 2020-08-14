@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -54,16 +55,17 @@ namespace MiAPI.Api.Controllers.Test{
             requestUri = string.Format("http://localhost:35555/api/video/{0}", nombreVideoABuscar);
             return expectedVideo;
         }
-
-        [Ignore("wip")]
+        
         [Test]
         public async Task get_all_videos_and_users() {
-            var expectedVideo = ForGivenData(out var client, out var requestUri);
+            HttpClient client = new HttpClient();
+            string requestUri = "http://localhost:35555/api/Video/VideosAndUsers";
+            
+            var result =  await client.GetAsync(requestUri);
+            var actualData = Newtonsoft.Json.JsonConvert.DeserializeObject<DataList>(result.Content.ReadAsStringAsync().Result);
 
-            var actualVideo = await FindVideo(client, requestUri);
-
-            actualVideo.Should().BeEquivalentTo(expectedVideo);
-            //await client.ShouldResponse().Ok();
+            actualData.Should().BeEquivalentTo(new DataList{Users =  new List<User>(),Videos = new List<Video>()});
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
         private static Video ForGivenData(out HttpClient client, out string requestUri){

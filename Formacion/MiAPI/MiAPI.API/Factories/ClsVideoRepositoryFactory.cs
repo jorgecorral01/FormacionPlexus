@@ -1,5 +1,6 @@
 ﻿using MiAPI.Actions;
 using MiAPI.Business.IRepositories;
+using MiAPI.Infrastructure.Repository;
 using MiAPI.Infrastructure.SqlRepository;
 
 namespace MiAPI.API.Factories{
@@ -16,6 +17,10 @@ namespace MiAPI.API.Factories{
 
         public AddVideoAction CreateAddVideoAction(){
             return new AddVideoAction(new ClsVideoRepositorySql(_connectionString));
+        }
+
+        public GetAllVideosAndUserAction CreateGetAllVideosAndUserAction(){
+            return new GetAllVideosAndUserAction(new ClsVideoRepositorySql(_connectionString), new ClsUserRepositorySql());
         }
     }
 }
