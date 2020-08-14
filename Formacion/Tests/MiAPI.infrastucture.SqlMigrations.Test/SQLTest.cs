@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Reflection;
 using FluentMigrator.Runner;
@@ -12,15 +13,19 @@ namespace MiAPI.Infrastucture.SqlMigrations.Test {
         public static readonly string ConnectionString;
 
         static SqlTest() {
+            var localPath = new Uri(Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(localPath)
+                //.SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
 
             ConnectionString = configuration.GetConnectionString("SqlFormacion");
-            //ConnectionString =
-            //    "Persist Security Info = False; Integrated Security = false; database = VideoClub; server =.\\Formacion; User ID = Formacion; pwd = Pruebas2019..";
 
+            if (string.IsNullOrEmpty(ConnectionString))
+            {
+                throw new Exception("The connection string has been lost");
+            }
             LaunchMigrations();
         }
 
