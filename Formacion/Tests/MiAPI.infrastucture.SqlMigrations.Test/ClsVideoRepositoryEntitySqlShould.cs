@@ -15,18 +15,24 @@ namespace MiAPI.Infrastructure.SqlRepository.Test {
         [Test]
         public async Task when_find_a_video_we_recover(){
             var videoClubContext = new VideoClubContext();
+            var anyNameEntity = "AnyNameEntity";
+            var anyFormatEntity = "AnyFormatEntity";
+            AddNewVideo(videoClubContext, anyNameEntity, anyFormatEntity);
+            var clsVideoRepositoryEntitySql = new ClsVideoRepositoryEntitySql(videoClubContext);
+
+            var actualVideo =  await  clsVideoRepositoryEntitySql.Find(anyNameEntity);
+
+            actualVideo.Should().BeEquivalentTo(new Video{name = anyNameEntity, format = anyFormatEntity });
+
+        }
+
+        private static void AddNewVideo(VideoClubContext videoClubContext, string anyNameEntity, string anyFormatEntity){
             videoClubContext.Videos.Add(new Videos{
-                Name = "AnyNameEntity",
-                Format = "AnyFormatEntity",
+                Name = anyNameEntity,
+                Format = anyFormatEntity,
                 CreateDate = DateTime.Now
             });
             videoClubContext.SaveChanges();
-            var clsVideoRepositoryEntitySql = new ClsVideoRepositoryEntitySql(videoClubContext);
-
-            var actualVideo =  await  clsVideoRepositoryEntitySql.Find("AnyNameEntity");
-
-            actualVideo.Should().BeEquivalentTo(new Video{name = "AnyNameEntity", format = "AnyFormatEntity" });
-
         }
     }
 }
