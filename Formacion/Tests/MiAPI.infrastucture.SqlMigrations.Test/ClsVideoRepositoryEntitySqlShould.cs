@@ -23,7 +23,13 @@ namespace MiAPI.Infrastructure.SqlRepository.Test {
             var actualVideo =  await  clsVideoRepositoryEntitySql.Find(anyNameEntity);
 
             actualVideo.Should().BeEquivalentTo(new Video{name = anyNameEntity, format = anyFormatEntity });
+            DeleteNewVideo(videoClubContext);
+        }
 
+        private static void DeleteNewVideo(VideoClubContext videoClubContext){
+            var videosToRemove = videoClubContext.Videos.FirstOrDefault(item => item.Name == "AnyNameEntity");
+            videoClubContext.Videos.RemoveRange(videosToRemove);
+            videoClubContext.SaveChanges();
         }
 
         private static void AddNewVideo(VideoClubContext videoClubContext, string anyNameEntity, string anyFormatEntity){
