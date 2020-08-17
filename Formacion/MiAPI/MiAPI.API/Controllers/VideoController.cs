@@ -22,17 +22,17 @@ namespace MiAPI.API.Controllers {
             options.Conventions.Controller<VideoController>().HasApiVersions(ApiVersioning.Versions());
         }
 
-        private readonly ClsVideoRepositoryFactory _clsVideoRepositoryFactory;
+        private readonly ClsActionFactory _clsActionFactory;
         
-        public VideoController(ClsVideoRepositoryFactory clsVideoRepositoryFactory){
-            _clsVideoRepositoryFactory = clsVideoRepositoryFactory;
+        public VideoController(ClsActionFactory clsActionFactory){
+            _clsActionFactory = clsActionFactory;
         }
         
         [HttpGet("{name}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Video>> Get(string name){
-            Video video =  await _clsVideoRepositoryFactory.CreateFindVideoAction().Execute(name);
+            Video video =  await _clsActionFactory.CreateFindVideoAction().Execute(name);
              if (video is null || video is VideoNotFound) return NotFound(new Video{name = name});
              return Ok(video);
         }
@@ -40,7 +40,7 @@ namespace MiAPI.API.Controllers {
         
         [HttpPost()]
         public async Task<ActionResult> Post([FromBody] Video video) {
-            _clsVideoRepositoryFactory.CreateAddVideoAction().Execute(video);
+            _clsActionFactory.CreateAddVideoAction().Execute(video);
             
             return Ok();
         }
@@ -49,7 +49,7 @@ namespace MiAPI.API.Controllers {
         [HttpGet()] 
         public async Task<ActionResult<DataList>> VideosAndUsers(){
 
-            DataList dataList = await _clsVideoRepositoryFactory.CreateGetAllVideosAndUserAction().Execute();
+            DataList dataList = await _clsActionFactory.CreateGetAllVideosAndUserAction().Execute();
             
             return Ok(dataList);
         }

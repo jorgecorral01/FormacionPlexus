@@ -6,6 +6,7 @@ using HealthChecks.UI.Client;
 using MiAPI.API.Controllers;
 using MiAPI.API.Factories;
 using MiAPI.API.swagger;
+using MiAPI.Infrastructure.Repository.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -35,14 +37,15 @@ namespace MiAPI.API {
             ConfigureMvc(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSingleton(new ClsVideoRepositoryFactory(Configuration.GetConnectionString("SqlFormacion")));
+            services.AddSingleton(new ClsActionFactory(Configuration.GetConnectionString("SqlFormacion")));
             //services.AddSingleton<ClsVideoRepositoryFactory>();
             services.AddMvcCore(config => {
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
                 //config.Filters.Add(new RequestBodyInsightsFilter(StatusCodes.Status400BadRequest));
             });
-
+            services.AddDbContext<VideoClubContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("SqlFormacion")));
             ConfigureSwagger(services);
         }
 

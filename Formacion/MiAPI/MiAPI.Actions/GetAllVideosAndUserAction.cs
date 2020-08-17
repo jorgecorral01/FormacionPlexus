@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MiAPI.Business.Dtos;
+using MiAPI.Business.IRepositories;
 using MiAPI.Infrastructure.Repository;
 using MiAPI.Infrastructure.SqlRepository;
 
 namespace MiAPI.Actions {
     public class GetAllVideosAndUserAction {
-        private readonly ClsVideoRepositorySql _videoRepository;
+        private readonly IClsVideoRepository _videoRepository;
         private readonly ClsUserRepositorySql _userRepository;
 
-        public GetAllVideosAndUserAction(ClsVideoRepositorySql videoRepository, ClsUserRepositorySql userRepository) {
+        public GetAllVideosAndUserAction(IClsVideoRepository videoRepository, ClsUserRepositorySql userRepository) {
             _videoRepository = videoRepository;
             _userRepository = userRepository;
         }

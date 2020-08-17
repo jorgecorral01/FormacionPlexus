@@ -1,18 +1,19 @@
 ﻿using MiAPI.Actions;
 using MiAPI.Business.IRepositories;
 using MiAPI.Infrastructure.Repository;
+using MiAPI.Infrastructure.Repository.Models;
 using MiAPI.Infrastructure.SqlRepository;
 
 namespace MiAPI.API.Factories{
-    public class ClsVideoRepositoryFactory{
+    public class ClsActionFactory{
         private readonly string _connectionString;
 
-        public ClsVideoRepositoryFactory(string connectionString) {
+        public ClsActionFactory(string connectionString) {
             this._connectionString = connectionString;
         }
 
         public FindVideoAction CreateFindVideoAction(){
-            return  new FindVideoAction(new ClsVideoRepositorySql(_connectionString));
+            return  new FindVideoAction(new ClsVideoRepositoryEntitySql(new VideoClubContext()));
         }
 
         public AddVideoAction CreateAddVideoAction(){
