@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clock.cs" />
+    <Compile Include="ClsBowling.cs" />
     <Compile Include="ClsFizzBuzz.cs" />
     <Compile Include="ClsSeason.cs" />
     <Compile Include="ClsStudentRepository.cs" />
