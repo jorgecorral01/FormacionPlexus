@@ -1034,3 +1034,8 @@ Formacion/Tests/MiAPI.Actions.Test/obj/Debug/netcoreapp2.2/MiAPI.Actions.Test.dl
 Formacion/Tests/MiAPI.Actions.Test/obj/Debug/netcoreapp2.2/MiAPI.Actions.Test.genruntimeconfig.cache
 Formacion/Tests/MiAPI.Actions.Test/obj/Debug/netcoreapp2.2/MiAPI.Actions.Test.pdb
 Formacion/Tests/MiAPI.infrastucture.SqlMigrations.Test/bin/Debug/netcoreapp2.2/app.config
+Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.cs
+Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.1/MiAPI.Infrastructure.Repository.AssemblyInfo.cs
+Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.1/MiAPI.Infrastructure.Repository.AssemblyInfoInputs.cache
+Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.1/MiAPI.Infrastructure.Repository.assets.cache
+Formacion/MiAPI/MiAPI.Infrastructure.SqlRepository/obj/Debug/netstandard2.1/MiAPI.Infrastructure.Repository.csprojAssemblyReference.cache
