@@ -15,15 +15,26 @@ namespace MiAPI.Infrastructure.SqlRepository.Test {
     public class ClsVideoRepositoryEntitySqlShould : SqlTest {
         private VideoClubContext videoClubContext;
 
-        
+        public ServiceCollection Services { get; private set; }
+        public ServiceProvider ServiceProvider { get; protected set; }
 
         [SetUp]
         public void SetUp() {
-            var optionsBuilder = new DbContextOptionsBuilder<VideoClubContext>()
-                .UseInMemoryDatabase(databaseName: "BDInMemory")
-                .Options;
+            //var optionsBuilder = new DbContextOptionsBuilder<VideoClubContext>()
+            //    .UseInMemoryDatabase(databaseName: "BDInMemory")
+            //    .Options;
 
-            videoClubContext = new VideoClubContext(optionsBuilder);
+            //videoClubContext = new VideoClubContext(optionsBuilder);
+
+            Services = new ServiceCollection();
+
+            Services.AddDbContext<VideoClubContext>(opt => opt.UseInMemoryDatabase(databaseName: "InMemoryDb"),
+                ServiceLifetime.Scoped,
+                ServiceLifetime.Scoped);
+
+            ServiceProvider = Services.BuildServiceProvider();
+
+            videoClubContext = ServiceProvider.GetService<VideoClubContext>();
         }
         [Test]
         public async Task when_find_a_video_we_recover(){
