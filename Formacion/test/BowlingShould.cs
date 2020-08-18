@@ -50,7 +50,7 @@ namespace test{
         }
 
         [Test]
-        public async Task when_in_second_throw_we_knocked_down_all_pins_the_next_throw_sum_double() {
+        public async Task when_do_spare_the_next_throw_sum_double() {
             var fisrtNumberPinsKnocked = 1;
             var secondNumberPinsKnocked = 9;
             var thirdNumberPinsKnocked = 5;
@@ -65,25 +65,32 @@ namespace test{
 
         [Test]
         public async Task when_try_do_11_throw_we_recieved_that_only_ten_times() {
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
+            await LaunchTenThrowsWithOutSpareOrStrike();
 
             Func<Task> action = async () => await ClsBowling.Roll(1);
 
             action.Should().ThrowExactly<TrowsException>().Which.MessageError.Should().Be("Only ten throws");
         }
-
-
+        
         [Test]
         public async Task when_in_ten_throw_we_have_strike_or_spare_we_can_do_another_throw(){
+            await LaunchTenThrows();
+
+            await ClsBowling.Roll(1);
+
+            ClsBowling.Score().Should().Be(20);
+        }
+
+        [Test]
+        public async Task when_do_the_best_game_the_score_will_be_300() {
+            await LaunchTenThrowsWithStrikes();
+
+            await ClsBowling.Roll(10);
+
+            ClsBowling.Score().Should().Be(300);
+        }
+
+        private static async Task LaunchTenThrows(){
             await ClsBowling.Roll(1);
             await ClsBowling.Roll(1);
             await ClsBowling.Roll(1);
@@ -94,11 +101,31 @@ namespace test{
             await ClsBowling.Roll(1);
             await ClsBowling.Roll(1);
             await ClsBowling.Roll(9);
+        }
 
+        private async Task LaunchTenThrowsWithOutSpareOrStrike() {
             await ClsBowling.Roll(1);
-
-            ClsBowling.Score().Should().Be(20);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
+            await ClsBowling.Roll(1);
         }
-
+        private async Task LaunchTenThrowsWithStrikes() {
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
+            await ClsBowling.Roll(10);
         }
+    }
 }
