@@ -56,6 +56,7 @@
     <Compile Include="ClsStudentRepository.cs" />
     <Compile Include="Dtos\Student.cs" />
     <Compile Include="Dtos\StudentAlreadyExist.cs" />
+    <Compile Include="Exceptions\TrowsException.cs" />
     <Compile Include="Interfaces\iClock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -86,5 +87,6 @@
       <Name>MiAPI.Business</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

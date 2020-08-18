@@ -1,5 +1,8 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Kata1;
+using Kata1.Exceptions;
 using NUnit.Framework;
 
 namespace test{
@@ -60,5 +63,30 @@ namespace test{
             ClsBowling.Score().Should().Be(expectedNumberPinsKnocked);
         }
 
-    }
+        [Test]
+        public void when_try_do_11_throw_we_recieved_that_only_ten_times() {
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+            ClsBowling.Roll(1);
+
+            Func<Task> action = async () => await ClsBowling.Roll(1);
+
+            action.Should().ThrowExactly<TrowsException>().Which.MessageError.Should().Be("Only ten throws");
+        }
+
+
+        [Test]
+        public void when_in_ten_throw_we_have_strike_or_spare_we_can_do_another_throw(){
+
+
+        }
+
+        }
 }
