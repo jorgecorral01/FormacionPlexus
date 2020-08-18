@@ -17,7 +17,7 @@ namespace Kata1{
             theThrows += 1;
             if (theThrows % 2 == 0 && theThrowsScores[theThrows-2] == 10) {
                 score += numberPinsKnocked;
-            }else if (theThrows >= 3 && theThrowsScores[theThrows - 3] == 10){
+            }else if (theThrows % 3 == 0 && theThrowsScores[theThrows - 3] == 10){
                 score += numberPinsKnocked;
             }
 
