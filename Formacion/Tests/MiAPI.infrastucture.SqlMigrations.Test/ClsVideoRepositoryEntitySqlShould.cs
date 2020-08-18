@@ -7,23 +7,36 @@ using FluentAssertions;
 using MiAPI.Business.Dtos;
 using MiAPI.Infrastructure.Repository.Models;
 using MiAPI.Infrastucture.SqlMigrations.Test;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 
 namespace MiAPI.Infrastructure.SqlRepository.Test {
     public class ClsVideoRepositoryEntitySqlShould : SqlTest {
+        private VideoClubContext videoClubContext;
 
+        
+
+        [SetUp]
+        public void SetUp() {
+            var optionsBuilder = new DbContextOptionsBuilder<VideoClubContext>()
+                .UseInMemoryDatabase(databaseName: "BDInMemory")
+                .Options;
+
+            videoClubContext = new VideoClubContext(optionsBuilder);
+        }
         [Test]
         public async Task when_find_a_video_we_recover(){
-            var videoClubContext = new VideoClubContext();
-            var anyNameEntity = "AnyNameEntity";
-            var anyFormatEntity = "AnyFormatEntity";
+            
+            var anyNameEntity = "AnyNameEntity2";
+            var anyFormatEntity = "AnyFormatEntity2";
             AddNewVideo(videoClubContext, anyNameEntity, anyFormatEntity);
             var clsVideoRepositoryEntitySql = new ClsVideoRepositoryEntitySql(videoClubContext);
 
             var actualVideo =  await  clsVideoRepositoryEntitySql.Find(anyNameEntity);
 
             actualVideo.Should().BeEquivalentTo(new Video{name = anyNameEntity, format = anyFormatEntity });
-            DeleteNewVideo(videoClubContext);
+            //DeleteNewVideo(videoClubContext);
         }
 
         private static void DeleteNewVideo(VideoClubContext videoClubContext){
