@@ -46,6 +46,19 @@ namespace test{
             ClsBowling.Score().Should().Be(expectedNumberPinsKnocked);
         }
 
+        [Test]
+        public void when_in_second_throw_we_knocked_down_all_pins_the_next_throw_sum_double() {
+            var fisrtNumberPinsKnocked = 1;
+            var secondNumberPinsKnocked = 9;
+            var thirdNumberPinsKnocked = 5;
+            ClsBowling.Roll(fisrtNumberPinsKnocked);
+            ClsBowling.Roll(secondNumberPinsKnocked);
+
+            ClsBowling.Roll(thirdNumberPinsKnocked);
+
+            var expectedNumberPinsKnocked = 20;
+            ClsBowling.Score().Should().Be(expectedNumberPinsKnocked);
+        }
 
     }
 }
