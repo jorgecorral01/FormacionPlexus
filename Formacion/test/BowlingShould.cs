@@ -18,21 +18,21 @@ namespace test{
         public async Task when_we_knocked_down_5_pins_on_the_first_roll_the_score_is_5(){
             var numberPinsKnocked = 5;
 
-            await ClsBowling.Roll(numberPinsKnocked);
+            await clsBowling.Roll(numberPinsKnocked);
 
-            ClsBowling.Score().Should().Be(numberPinsKnocked);
+            clsBowling.Score().Should().Be(numberPinsKnocked);
         }
 
         [Test]
         public async Task when_in_first_throw_we_knocked_down_10_pins_and_in_the_second_throw_5_the_score_is_20(){
             var fisrtNumberPinsKnocked = 10;
             var secondNumberPinsKnocked = 5;
-            await ClsBowling.Roll(fisrtNumberPinsKnocked);
+            await clsBowling.Roll(fisrtNumberPinsKnocked);
 
-            await  ClsBowling.Roll(secondNumberPinsKnocked);
+            await clsBowling.Roll(secondNumberPinsKnocked);
 
             var expectedNumberPinsKnocked = 20;
-            ClsBowling.Score().Should().Be(expectedNumberPinsKnocked);
+            clsBowling.Score().Should().Be(expectedNumberPinsKnocked);
         }
 
         [Test]
@@ -40,13 +40,13 @@ namespace test{
             var fisrtNumberPinsKnocked = 10;
             var secondNumberPinsKnocked = 5;
             var thirdNumberPinsKnocked = 5;
-            await ClsBowling.Roll(fisrtNumberPinsKnocked);
-            await ClsBowling.Roll(secondNumberPinsKnocked);
+            await clsBowling.Roll(fisrtNumberPinsKnocked);
+            await clsBowling.Roll(secondNumberPinsKnocked);
 
-            await ClsBowling.Roll(thirdNumberPinsKnocked);
+            await clsBowling.Roll(thirdNumberPinsKnocked);
 
             var expectedNumberPinsKnocked = 35;
-            ClsBowling.Score().Should().Be(expectedNumberPinsKnocked);
+            clsBowling.Score().Should().Be(expectedNumberPinsKnocked);
         }
 
         [Test]
@@ -54,20 +54,20 @@ namespace test{
             var fisrtNumberPinsKnocked = 1;
             var secondNumberPinsKnocked = 9;
             var thirdNumberPinsKnocked = 5;
-            await ClsBowling.Roll(fisrtNumberPinsKnocked);
-            await ClsBowling.Roll(secondNumberPinsKnocked);
+            await clsBowling.Roll(fisrtNumberPinsKnocked);
+            await clsBowling.Roll(secondNumberPinsKnocked);
 
-            await ClsBowling.Roll(thirdNumberPinsKnocked);
+            await clsBowling.Roll(thirdNumberPinsKnocked);
 
             var expectedNumberPinsKnocked = 20;
-            ClsBowling.Score().Should().Be(expectedNumberPinsKnocked);
+            clsBowling.Score().Should().Be(expectedNumberPinsKnocked);
         }
 
         [Test]
         public async Task when_try_do_11_throw_we_recieved_that_only_ten_times() {
             await LaunchTenThrowsWithOutSpareOrStrike();
 
-            Func<Task> action = async () => await ClsBowling.Roll(1);
+            Func<Task> action = async () => await clsBowling.Roll(1);
 
             action.Should().ThrowExactly<TrowsException>().Which.MessageError.Should().Be("Only ten throws");
         }
@@ -76,56 +76,56 @@ namespace test{
         public async Task when_in_ten_throw_we_have_strike_or_spare_we_can_do_another_throw(){
             await LaunchTenThrows();
 
-            await ClsBowling.Roll(1);
+            await clsBowling.Roll(1);
 
-            ClsBowling.Score().Should().Be(20);
+            clsBowling.Score().Should().Be(20);
         }
 
         [Test]
         public async Task when_do_the_best_game_the_score_will_be_300() {
             await LaunchTenThrowsWithStrikes();
 
-            await ClsBowling.Roll(10);
+            await clsBowling.Roll(10);
 
-            ClsBowling.Score().Should().Be(300);
+            clsBowling.Score().Should().Be(300);
         }
 
-        private static async Task LaunchTenThrows(){
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(9);
+        private async Task LaunchTenThrows(){
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(9);
         }
 
         private async Task LaunchTenThrowsWithOutSpareOrStrike() {
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
-            await ClsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
+            await clsBowling.Roll(1);
         }
         private async Task LaunchTenThrowsWithStrikes() {
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
-            await ClsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
+            await clsBowling.Roll(10);
         }
     }
 }

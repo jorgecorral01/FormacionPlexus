@@ -6,16 +6,16 @@ using Kata1.Exceptions;
 
 namespace Kata1 {
     public class ClsBowling {
-        private static int score;
-        private static int theThrows;
-        private static List<int> theThrowsScores;
+        private int score;
+        private int theThrows;
+        private List<int> theThrowsScores;
 
         public ClsBowling() {
             score = 0;
             theThrows = 0;
             theThrowsScores = new List<int>();
         }
-        public static async Task<int> Roll(int numberPinsKnocked) {
+        public async Task<int> Roll(int numberPinsKnocked) {
             await Task.Delay(1);
             theThrows += 1;
             if(theThrows == 11 && (!IsSpare() && !IsStrike())) {
@@ -34,15 +34,15 @@ namespace Kata1 {
             return 0;
         }
 
-        private static bool IsSpare() {
+        private bool IsSpare() {
             return (theThrowsScores[theThrows - 2] + theThrowsScores[theThrows - 3] == 10 || theThrowsScores[theThrows - 3] == 10);
         }
 
-        private static bool IsStrike() {
+        private  bool IsStrike() {
             return (theThrowsScores[theThrows - 2] == 10) || (theThrows >= 3 && theThrowsScores[theThrows - 3] == 10);
         }
 
-        public static int Score() {
+        public  int Score() {
             return score;
         }
     }
