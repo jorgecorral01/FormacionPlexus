@@ -1,0 +1,49 @@
+﻿using System.CodeDom;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
+using Kata1.Exceptions;
+
+namespace Kata1 {
+    public class ClsBowling2 {
+        private static List<int> theThrowsScores;
+
+        public ClsBowling() {
+            theThrowsScores = new List<int>();
+        }
+        public static void Roll(int numberPinsKnocked) {
+            theThrowsScores.Add(numberPinsKnocked);
+        }
+        
+        public static int Score(){
+            int score = 0;
+            int frameIndex = 0;
+            for(int frame = 0;frame < 10;frame++) {
+                if(isSpare(frameIndex)) {
+                    score += 10 + theThrowsScores[frameIndex + 2];
+                    frameIndex += 2;
+                }
+                else if(isStrike(frameIndex)) {
+                    score += 10 + theThrowsScores[frameIndex + 1] + theThrowsScores[frameIndex + 2];
+                    frameIndex++;
+                }
+                else {
+                    score += theThrowsScores[frameIndex] + theThrowsScores[frameIndex + 1];
+                    frameIndex += 2;
+                }
+
+            }
+
+            return score;
+        }
+
+        private static bool isSpare(int frameIndex) {
+            return theThrowsScores[frameIndex] + theThrowsScores[frameIndex + 1] == 10;
+        }
+
+        private static bool isStrike(int frameIndex) {
+            return theThrowsScores[frameIndex] == 10;
+        }
+
+    }
+}
