@@ -36,7 +36,7 @@ namespace test{
         }
 
         [Test]
-        public async Task when_in_first_throw_we_knocked_down_10_pins_the_next_two_throw_sum_double() {
+        public async Task when_do_strike_the_next_two_throw_sum_double() {
             var fisrtNumberPinsKnocked = 10;
             var secondNumberPinsKnocked = 5;
             var thirdNumberPinsKnocked = 5;
@@ -45,7 +45,7 @@ namespace test{
 
             await ClsBowling.Roll(thirdNumberPinsKnocked);
 
-            var expectedNumberPinsKnocked = 30;
+            var expectedNumberPinsKnocked = 35;
             ClsBowling.Score().Should().Be(expectedNumberPinsKnocked);
         }
 
