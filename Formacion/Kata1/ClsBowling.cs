@@ -21,7 +21,7 @@ namespace Kata1{
             if (theThrows == 11 && (!IsSpare() && !IsStrike())) {
                 throw new TrowsException("Only ten throws");}
 
-            if (IsStrike()) {
+            if (theThrows % 2 == 0 && IsStrike() || theThrows % 3 == 0 && IsStrike()) {
                 score += numberPinsKnocked;
             } else if(theThrows % 3 == 0 && IsSpare()) {
                 score += numberPinsKnocked;
@@ -39,7 +39,7 @@ namespace Kata1{
         }
 
         private static bool IsStrike(){
-            return (theThrows % 2 == 0 && theThrowsScores[theThrows-2] == 10) || (theThrows % 3 == 0 && theThrowsScores[theThrows - 3] == 10);
+            return (theThrowsScores[theThrows-2] == 10) || (theThrows >=3 && theThrowsScores[theThrows - 3] == 10);
         }
 
         public static int Score(){
