@@ -18,10 +18,10 @@ namespace Kata1{
         public static async Task<int> Roll(int numberPinsKnocked){
             await Task.Delay(1);
             theThrows += 1;
-            if (theThrows == 11 && (theThrowsScores[theThrows - 2] + theThrowsScores[theThrows - 3] != 10 && theThrowsScores[theThrows - 2] != 10)) {
+            if (theThrows == 11 && (theThrowsScores[theThrows - 2] + theThrowsScores[theThrows - 3] != 10 && !IsStrike())) {
                 throw new TrowsException("Only ten throws");}
 
-            if (theThrows % 2 == 0 && theThrowsScores[theThrows-2] == 10) {
+            if (IsStrike()) {
                 score += numberPinsKnocked;
             }else if (theThrows % 3 == 0 && theThrowsScores[theThrows - 3] == 10){
                 score += numberPinsKnocked;
@@ -34,6 +34,10 @@ namespace Kata1{
                 score += numberPinsKnocked;
             theThrowsScores.Add(numberPinsKnocked);
             return 0;
+        }
+
+        private static bool IsStrike(){
+            return theThrows % 2 == 0 && theThrowsScores[theThrows-2] == 10;
         }
 
         public static int Score(){
