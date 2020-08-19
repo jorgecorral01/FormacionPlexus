@@ -31,7 +31,7 @@ namespace Kata1 {
                 }
             }
             else {
-                if(product.Sellin >= 0) {
+                if(product.Sellin >= 0 && product.Name != "Conjured") {
                     product.Quality -= 1;
                 }
                 else {

@@ -116,5 +116,17 @@ namespace test{
             actualProduct.Sellin.Should().Be(11);
             actualProduct.Quality.Should().Be(11);
         }
+
+        
+        [Test]
+        public async Task quality_decrease_in_two_when_product_name_is_conjured() {
+            var product = new Product { Name = "Conjured", Sellin = 12, Quality = 10 };
+            var gildedRose = new GildedRose();
+
+            var actualProduct = await gildedRose.UpdateProduct(product);
+
+            actualProduct.Sellin.Should().Be(11);
+            actualProduct.Quality.Should().Be(8);
+        }
     }
 }
