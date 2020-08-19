@@ -8,19 +8,23 @@ namespace Kata1{
         public async Task<Product>  UpdateProduct(Product product){
             await Task.Delay(1);
             product.Sellin -= 1;
+            UpdateQuality(product);
+            if(product.Quality < 0) { throw new GildedRoseException("The quality never can be negative"); }
+            return product;
+        }
+
+        private static void UpdateQuality(Product product){
             if (product.Name == "Aged Brie"){
                 product.Quality += 1;
             }
             else{
-                if(product.Sellin >= 0) {
+                if (product.Sellin >= 0){
                     product.Quality -= 1;
                 }
-                else {
+                else{
                     product.Quality -= 2;
                 }
-                if(product.Quality < 0) { throw new GildedRoseException("The quality never can be negative"); }
             }
-            return product;
         }
     }
 }
