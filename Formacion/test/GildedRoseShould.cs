@@ -61,5 +61,16 @@ namespace test{
 
             action.Should().ThrowExactly<GildedRoseException>().Which.MessageError.Should().Be("The quality never can be greater than 50");
         }
+
+        [Test]
+        public async Task quality_and_sellin_never_decrease_when_product_name_is_sulfuras() {
+            var product = new Product { Name = "Sulfuras", Sellin = 10, Quality = 10 };
+            var gildedRose = new GildedRose();
+
+            var actualProduct = await gildedRose.UpdateProduct(product);
+
+            actualProduct.Quality.Should().Be(10);
+            actualProduct.Sellin.Should().Be(10);
+        }
     }
 }
