@@ -8,7 +8,9 @@ namespace Kata1{
             if (product.Sellin > actualdate){
                 product.Quality -= 1;
             }
-
+            else{
+                product.Quality -= 2;
+            }
             return product;
         }
     }

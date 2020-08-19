@@ -18,7 +18,6 @@ namespace test{
             actualProduct.Quality.Should().Be(9);
         }
 
-        [Ignore("wip")]
         [Test]
         public void quality_double_degrade_when_sellin_value_has_passed() {
             var actualdate = DateTime.Now;
