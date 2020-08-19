@@ -10,6 +10,7 @@ namespace Kata1{
             product.Sellin -= 1;
             UpdateQuality(product);
             if(product.Quality < 0) { throw new GildedRoseException("The quality never can be negative"); }
+            if(product.Quality > 50) { throw new GildedRoseException("The quality never can be greater than 50"); }
             return product;
         }
 
