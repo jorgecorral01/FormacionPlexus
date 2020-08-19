@@ -15,6 +15,7 @@ namespace test{
             var actualProduct =  gildedRose.UpdateProduct(product);
 
             actualProduct.Quality.Should().Be(9);
+            actualProduct.Sellin.Should().Be(9);
         }
 
         [Test]
@@ -25,6 +26,7 @@ namespace test{
             var actualProduct = gildedRose.UpdateProduct(product);
 
             actualProduct.Quality.Should().Be(8);
+            actualProduct.Sellin.Should().Be(-2);
         }
     }
 }
