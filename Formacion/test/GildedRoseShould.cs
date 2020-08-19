@@ -64,13 +64,13 @@ namespace test{
 
         [Test]
         public async Task quality_and_sellin_never_decrease_when_product_name_is_sulfuras() {
-            var product = new Product { Name = "Sulfuras", Sellin = 10, Quality = 10 };
+            var product = new Product { Name = "Sulfuras", Sellin = 10, Quality = 80 };
             var gildedRose = new GildedRose();
 
             var actualProduct = await gildedRose.UpdateProduct(product);
 
-            actualProduct.Quality.Should().Be(10);
             actualProduct.Sellin.Should().Be(10);
+            actualProduct.Quality.Should().Be(80);
         }
 
         [Test]
@@ -137,6 +137,17 @@ namespace test{
             Func<Task> action = async () => await gildedRose.UpdateProduct(product); ;
 
             action.Should().ThrowExactly<GildedRoseException>().Which.MessageError.Should().Be("The quality Sulfuras always 80");
+        }
+
+        [Test]
+        public async Task quality_for_sulfuras_never_change_of_80() {
+            var product = new Product { Name = "Sulfuras", Sellin = 12, Quality = 80 };
+            var gildedRose = new GildedRose();
+
+            var actualProduct = await gildedRose.UpdateProduct(product);
+
+            actualProduct.Sellin.Should().Be(12);
+            actualProduct.Quality.Should().Be(80);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Kata1 {
             }
 
             if(product.Quality < 0) { throw new GildedRoseException("The quality never can be negative"); }
-            if(product.Quality > 50) { throw new GildedRoseException("The quality never can be greater than 50"); }
+            if(product.Quality > 50 && product.Name != "Sulfuras") { throw new GildedRoseException("The quality never can be greater than 50"); }
             if(product.Quality != 80 && product.Name == "Sulfuras" ) { throw new GildedRoseException("The quality Sulfuras always 80"); }
             return product;
         }
