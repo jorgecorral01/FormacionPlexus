@@ -23,8 +23,11 @@ namespace Kata1 {
                 if (product.Sellin > 5 && product.Sellin <= 10) {
                     product.Quality += 2;
                 }
-                else if (product.Sellin <= 5) {
+                else if (product.Sellin > 0 && product.Sellin <= 5) {
                     product.Quality += 3;
+                }
+                else{
+                    product.Quality = 0;
                 }
                 
             }

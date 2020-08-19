@@ -94,5 +94,16 @@ namespace test{
             actualProduct.Sellin.Should().Be(5);
             actualProduct.Quality.Should().Be(13);
         }
+
+        [Test]
+        public async Task quality_will_be_zero_when_sellin_will_be_zero_days_when_product_name_is_backstage_passes() {
+            var product = new Product { Name = "Backstage passes", Sellin = 1, Quality = 10 };
+            var gildedRose = new GildedRose();
+
+            var actualProduct = await gildedRose.UpdateProduct(product);
+
+            actualProduct.Sellin.Should().Be(0);
+            actualProduct.Quality.Should().Be(0);
+        }
     }
 }
