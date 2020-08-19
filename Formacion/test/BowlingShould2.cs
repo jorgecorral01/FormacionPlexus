@@ -14,6 +14,7 @@ namespace test{
             clsBowling2 = new ClsBowling2();
         }
 
+        [Ignore("wip")]
         [Test]
         public void when_we_knocked_down_5_pins_on_the_first_roll_the_score_is_5(){
             var numberPinsKnocked = new int[10] { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0};
