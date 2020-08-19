@@ -17,7 +17,7 @@ namespace Kata1 {
         }
 
         private static void UpdateQuality(Product product) {
-            if(product.Name == "Aged Brie") {
+            if(product.Name == "Aged Brie" || (product.Name == "Backstage passes" && product.Sellin > 10)) {
                 product.Quality += 1;
             }else if (product.Name == "Backstage passes") {
                 if (product.Sellin > 5 && product.Sellin <= 10) {
@@ -29,7 +29,6 @@ namespace Kata1 {
                 else{
                     product.Quality = 0;
                 }
-                
             }
             else {
                 if(product.Sellin >= 0) {

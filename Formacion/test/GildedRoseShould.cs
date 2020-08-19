@@ -105,5 +105,16 @@ namespace test{
             actualProduct.Sellin.Should().Be(0);
             actualProduct.Quality.Should().Be(0);
         }
+
+        [Test]
+        public async Task quality_increase_in_one_when_sellin_greater_then_10_days_when_product_name_is_backstage_passes() {
+            var product = new Product { Name = "Backstage passes", Sellin = 12, Quality = 10 };
+            var gildedRose = new GildedRose();
+
+            var actualProduct = await gildedRose.UpdateProduct(product);
+
+            actualProduct.Sellin.Should().Be(11);
+            actualProduct.Quality.Should().Be(11);
+        }
     }
 }
