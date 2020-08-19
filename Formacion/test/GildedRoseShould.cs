@@ -128,5 +128,15 @@ namespace test{
             actualProduct.Sellin.Should().Be(11);
             actualProduct.Quality.Should().Be(8);
         }
+
+        [Test]
+        public void when_quality_for_sulfuras_is_diferent_to_80_return_gildedrose_exception() {
+            var product = new Product { Name = "Sulfuras", Sellin = -1, Quality = 50 };
+            var gildedRose = new GildedRose();
+
+            Func<Task> action = async () => await gildedRose.UpdateProduct(product); ;
+
+            action.Should().ThrowExactly<GildedRoseException>().Which.MessageError.Should().Be("The quality Sulfuras always 80");
+        }
     }
 }
