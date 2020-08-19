@@ -40,5 +40,16 @@ namespace test{
 
             action.Should().ThrowExactly<GildedRoseException>().Which.MessageError.Should().Be("The quality never can be negative");
         }
+
+        [Test]
+        public async Task quality_increase_when_product_name_is_aged_brie() {
+            var product = new Product {Name = "Aged Brie", Sellin = 10, Quality = 10 };
+            var gildedRose = new GildedRose();
+
+            var actualProduct = await gildedRose.UpdateProduct(product);
+
+            actualProduct.Quality.Should().Be(11);
+            actualProduct.Sellin.Should().Be(9);
+        }
     }
 }
