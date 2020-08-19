@@ -19,8 +19,14 @@ namespace Kata1 {
         private static void UpdateQuality(Product product) {
             if(product.Name == "Aged Brie") {
                 product.Quality += 1;
-            }else if (product.Name == "Backstage passes" && product.Sellin <= 10) {
-                product.Quality += 2;
+            }else if (product.Name == "Backstage passes") {
+                if (product.Sellin > 5 && product.Sellin <= 10) {
+                    product.Quality += 2;
+                }
+                else if (product.Sellin <= 5) {
+                    product.Quality += 3;
+                }
+                
             }
             else {
                 if(product.Sellin >= 0) {
