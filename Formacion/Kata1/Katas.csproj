@@ -55,9 +55,11 @@
     <Compile Include="ClsFizzBuzz.cs" />
     <Compile Include="ClsSeason.cs" />
     <Compile Include="ClsStudentRepository.cs" />
+    <Compile Include="Dtos\Product.cs" />
     <Compile Include="Dtos\Student.cs" />
     <Compile Include="Dtos\StudentAlreadyExist.cs" />
     <Compile Include="Exceptions\TrowsException.cs" />
+    <Compile Include="GildedRose.cs" />
     <Compile Include="Interfaces\iClock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http.Headers;
 using FluentAssertions;
+using Kata1;
+using Kata1.Dtos;
 using NUnit.Framework;
 
 namespace test{
@@ -16,6 +18,7 @@ namespace test{
             actualProduct.Quality.Should().Be(9);
         }
 
+        [Ignore("wip")]
         [Test]
         public void quality_double_degrade_when_sellin_value_has_passed() {
             var actualdate = DateTime.Now;
@@ -26,21 +29,5 @@ namespace test{
 
             actualProduct.Quality.Should().Be(8);
         }
-    }
-
-    public class GildedRose
-    {
-        public Product UpdateProduct(DateTime actualdate, Product product){
-            if (product.Sellin > actualdate){
-                product.Quality -= 1;
-            }
-
-            return product;
-        }
-    }
-
-    public class Product{
-        public DateTime Sellin{ get; set; }
-        public int Quality{ get; set; }
     }
 }
