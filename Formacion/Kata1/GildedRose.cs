@@ -1,11 +1,11 @@
-﻿using System;
-using Kata1.Dtos;
+﻿using Kata1.Dtos;
 
 namespace Kata1{
     public class GildedRose
     {
-        public Product UpdateProduct(DateTime actualdate, Product product){
-            if (product.Sellin > actualdate){
+        public Product UpdateProduct(Product product){
+            product.Sellin -= 1;
+            if (product.Sellin >= 0){
                 product.Quality -= 1;
             }
             else{
