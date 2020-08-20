@@ -1,4 +1,5 @@
 ﻿using System;
+using Kata1.Exceptions;
 
 namespace Kata1.Products{
     public class AgedBrieProduct : ProductAbstract.ProductAbstract{
@@ -13,6 +14,7 @@ namespace Kata1.Products{
 
         public override void UpdateQuality(){
             Quality += 1;
+            if (Quality > 50) {throw new GildedRoseException("The quality never can be greater than 50");}
         }
     }
 }

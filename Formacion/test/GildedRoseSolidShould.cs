@@ -48,15 +48,14 @@ namespace test{
             product.Quality.Should().Be(11);
         }
 
-        //[Test]
-        //public void when_quality_will_be_greater_than_50_return_gildedrose_exception() {
-        //    var product = new Product { Name = "Aged Brie", Sellin = -1, Quality = 50 };
-        //    var gildedRose = new GildedRose();
+        [Test]
+        public void when_quality_will_be_greater_than_50_return_gildedrose_exception() {
+            var product = new AgedBrieProduct { Name = "Aged Brie", Sellin = -1, Quality = 50 };
+            
+            var ex = Assert.Throws<GildedRoseException>(() => product.UpdateProduct());
 
-        //    Func<Task> action = async () => await gildedRose.UpdateProduct(product); ;
-
-        //    action.Should().ThrowExactly<GildedRoseException>().Which.MessageError.Should().Be("The quality never can be greater than 50");
-        //}
+            ex.MessageError.Should().Be("The quality never can be greater than 50");
+        }
 
         //[Test]
         //public async Task quality_and_sellin_never_decrease_when_product_name_is_sulfuras() {
