@@ -19,27 +19,47 @@ namespace Kata1 {
         }
 
         private static void UpdateQuality(Product product) {
-            if(product.Name == "Aged Brie" || (product.Name == "Backstage passes" && product.Sellin > 10)) {
-                product.Quality += 1;
-            }else if (product.Name == "Backstage passes") {
-                if (product.Sellin > 5 && product.Sellin <= 10) {
-                    product.Quality += 2;
+            if(IsAgedBrie(product.Name) || (IsBackstagePasses(product.Name) && IsSellingGreaterThan(product.Sellin,10))) {
+                UpdateQuality(product, 1);
+            }else if (IsBackstagePasses(product.Name)) {
+                if (IsSellingGreaterThan(product.Sellin, 5) && product.Sellin <= 10) {
+                    UpdateQuality(product, 2);
                 }
-                else if (product.Sellin > 0 && product.Sellin <= 5) {
-                    product.Quality += 3;
+                else if (IsSellingGreaterThan(product.Sellin, 0) && product.Sellin <= 5) {
+                    UpdateQuality(product, 3);
                 }
                 else{
                     product.Quality = 0;
                 }
             }
             else {
-                if(product.Sellin >= 0 && product.Name != "Conjured") {
-                    product.Quality -= 1;
+                if(product.Sellin >= 0 && !IsConjured(product.Name)) {
+                    UpdateQuality(product, -1);
                 }
                 else {
-                    product.Quality -= 2;
+                    UpdateQuality(product, -2);
                 }
             }
+        }
+
+        private static bool IsSellingGreaterThan(int sellin, int number){
+            return sellin > number;
+        }
+
+        private static bool IsConjured(string name){
+            return name == "Conjured";
+        }
+
+        private static void UpdateQuality(Product product, int productQualityIncrease){
+            product.Quality += productQualityIncrease;
+        }
+
+        private static bool IsAgedBrie(string name) {
+            return name == "Aged Brie";
+        }
+
+        private static bool IsBackstagePasses(string name){
+            return name == "Backstage passes";
         }
     }
 }
