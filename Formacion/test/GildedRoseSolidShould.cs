@@ -30,7 +30,7 @@ namespace test{
         }
 
         [Test]
-        public void when_quality_will_be_negative_return_gildedrose_exception() {
+        public void when_quality_will_be_negative_return_gildedrose_exception_with_async_method() {
             var product = new AnyProduct() { Sellin = -1, Quality = 0 };
             
             var ex = Assert.Throws<GildedRoseException>(() => product.UpdateProduct());
