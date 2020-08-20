@@ -110,23 +110,21 @@ namespace test{
         [Test]
         public void quality_decrease_in_two_when_product_name_is_conjured() {
             var product = new ConjuredProduct { Name = "Conjured", Sellin = 12, Quality = 10 };
-
-
+            
             product.UpdateProduct();
 
             product.Sellin.Should().Be(11);
             product.Quality.Should().Be(8);
         }
 
-        //[Test]
-        //public void when_quality_for_sulfuras_is_diferent_to_80_return_gildedrose_exception() {
-        //    var product = new Product { Name = "Sulfuras", Sellin = -1, Quality = 50 };
-        //    var gildedRose = new GildedRose();
+        [Test]
+        public void when_quality_for_sulfuras_is_diferent_to_80_return_gildedrose_exception() {
+            var product = new SulfurasProduct { Name = "Sulfuras", Sellin = -1, Quality = 50 };
 
-        //    Func<Task> action = async () => await gildedRose.UpdateProduct(product); ;
+            var ex = Assert.Throws<GildedRoseException>(() => product.UpdateProduct());
 
-        //    action.Should().ThrowExactly<GildedRoseException>().Which.MessageError.Should().Be("The quality Sulfuras always 80");
-        //}
+            ex.MessageError.Should().Be("The quality Sulfuras always 80");
+        }
 
         //[Test]
         //public async Task quality_for_sulfuras_never_change_of_80() {
