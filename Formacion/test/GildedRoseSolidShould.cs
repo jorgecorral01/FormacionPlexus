@@ -107,16 +107,16 @@ namespace test{
             product.Quality.Should().Be(0);
         }
 
-        //[Test]
-        //public async Task quality_decrease_in_two_when_product_name_is_conjured() {
-        //    var product = new Product { Name = "Conjured", Sellin = 12, Quality = 10 };
-        //    var gildedRose = new GildedRose();
+        [Test]
+        public void quality_decrease_in_two_when_product_name_is_conjured() {
+            var product = new ConjuredProduct { Name = "Conjured", Sellin = 12, Quality = 10 };
 
-        //    var actualProduct = await gildedRose.UpdateProduct(product);
 
-        //    actualProduct.Sellin.Should().Be(11);
-        //    actualProduct.Quality.Should().Be(8);
-        //}
+            product.UpdateProduct();
+
+            product.Sellin.Should().Be(11);
+            product.Quality.Should().Be(8);
+        }
 
         //[Test]
         //public void when_quality_for_sulfuras_is_diferent_to_80_return_gildedrose_exception() {
