@@ -10,7 +10,13 @@
         }
 
         public override void UpdateQuality(){
-            Quality += 1;
+            if (Sellin <= 10){
+                Quality += 2;
+            }
+            else{
+                Quality += 1;
+            }
+            
         }
     }
 }

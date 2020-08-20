@@ -77,15 +77,15 @@ namespace test{
             product.Quality.Should().Be(11);
         }
 
-        //[Test]
-        //public void quality_increase_in_two_when_sellin_less_10_days_or_less_when_product_name_is_backstage_passes() {
-        //    var product = new BackstagePassesProduct { Name = "Backstage passes", Sellin = 11, Quality = 10 };
+        [Test]
+        public void quality_increase_in_two_when_sellin_less_ten_days_or_less_when_product_name_is_backstage_passes() {
+            var product = new BackstagePassesProduct { Name = "Backstage passes", Sellin = 11, Quality = 10 };
 
-        //    product.UpdateProduct();
+            product.UpdateProduct();
 
-        //    product.Sellin.Should().Be(10);
-        //    product.Quality.Should().Be(12);
-        //}
+            product.Sellin.Should().Be(10);
+            product.Quality.Should().Be(12);
+        }
 
         //[Test]
         //public async Task quality_increase_in_three_when_sellin_less_5_days_or_less_when_product_name_is_backstage_passes() {
