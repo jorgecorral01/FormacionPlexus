@@ -126,15 +126,14 @@ namespace test{
             ex.MessageError.Should().Be("The quality Sulfuras always 80");
         }
 
-        //[Test]
-        //public async Task quality_for_sulfuras_never_change_of_80() {
-        //    var product = new Product { Name = "Sulfuras", Sellin = 12, Quality = 80 };
-        //    var gildedRose = new GildedRose();
+        [Test]
+        public void  quality_for_sulfuras_never_change_of_80() {
+            var product = new SulfurasProduct{ Name = "Sulfuras", Sellin = 12, Quality = 80 };
 
-        //    var actualProduct = await gildedRose.UpdateProduct(product);
+            product.UpdateProduct();
 
-        //    actualProduct.Sellin.Should().Be(12);
-        //    actualProduct.Quality.Should().Be(80);
-        //}
+            product.Sellin.Should().Be(12);
+            product.Quality.Should().Be(80);
+        }
     }
 }
