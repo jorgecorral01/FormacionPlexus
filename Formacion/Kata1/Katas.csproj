@@ -60,7 +60,6 @@
     <Compile Include="Dtos\StudentAlreadyExist.cs" />
     <Compile Include="Exceptions\GildedRoseException.cs" />
     <Compile Include="Exceptions\TrowsException.cs" />
-    <Compile Include="GildedRoseSolid.cs" />
     <Compile Include="GildedRose.cs" />
     <Compile Include="Interfaces\iClock.cs" />
     <Compile Include="Products\AgedBrieProduct.cs" />

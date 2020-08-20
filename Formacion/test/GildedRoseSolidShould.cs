@@ -87,16 +87,15 @@ namespace test{
             product.Quality.Should().Be(12);
         }
 
-        //[Test]
-        //public async Task quality_increase_in_three_when_sellin_less_5_days_or_less_when_product_name_is_backstage_passes() {
-        //    var product = new Product { Name = "Backstage passes", Sellin = 6, Quality = 10 };
-        //    var gildedRose = new GildedRose();
+        [Test]
+        public void quality_increase_in_three_when_sellin_less_5_days_or_less_when_product_name_is_backstage_passes() {
+            var product = new BackstagePassesProduct { Name = "Backstage passes", Sellin = 6, Quality = 10 };
+            
+            product.UpdateProduct();
 
-        //    var actualProduct = await gildedRose.UpdateProduct(product);
-
-        //    actualProduct.Sellin.Should().Be(5);
-        //    actualProduct.Quality.Should().Be(13);
-        //}
+            product.Sellin.Should().Be(5);
+            product.Quality.Should().Be(13);
+        }
 
         //[Test]
         //public async Task quality_will_be_zero_when_sellin_will_be_zero_days_when_product_name_is_backstage_passes() {
@@ -108,18 +107,6 @@ namespace test{
         //    actualProduct.Sellin.Should().Be(0);
         //    actualProduct.Quality.Should().Be(0);
         //}
-
-        //[Test]
-        //public async Task quality_increase_in_one_when_sellin_greater_then_10_days_when_product_name_is_backstage_passes() {
-        //    var product = new Product { Name = "Backstage passes", Sellin = 12, Quality = 10 };
-        //    var gildedRose = new GildedRose();
-
-        //    var actualProduct = await gildedRose.UpdateProduct(product);
-
-        //    actualProduct.Sellin.Should().Be(11);
-        //    actualProduct.Quality.Should().Be(11);
-        //}
-
 
         //[Test]
         //public async Task quality_decrease_in_two_when_product_name_is_conjured() {
