@@ -9,6 +9,7 @@ namespace Kata1.Products {
             //await Task.Delay(1);
             UpdateSellin();
             UpdateQuality();
+            if(Quality < 0) { throw new GildedRoseException("The quality never can be negative"); }
         }
 
         public override void UpdateSellin() {
@@ -22,7 +23,6 @@ namespace Kata1.Products {
             else {
                 Quality -= 1;
             }
-            if (Quality < 0) {throw new GildedRoseException("The quality never can be negative");}
         }
     }
 }

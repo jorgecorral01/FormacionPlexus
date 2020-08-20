@@ -6,6 +6,7 @@ namespace Kata1.Products{
         public override void UpdateProduct(){
             UpdateSellin();
             UpdateQuality();
+            if(Quality > 50) { throw new GildedRoseException("The quality never can be greater than 50"); }
         }
 
         public override void UpdateSellin(){
@@ -14,7 +15,6 @@ namespace Kata1.Products{
 
         public override void UpdateQuality(){
             Quality += 1;
-            if (Quality > 50) {throw new GildedRoseException("The quality never can be greater than 50");}
         }
     }
 }
