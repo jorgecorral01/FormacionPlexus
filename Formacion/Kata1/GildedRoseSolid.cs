@@ -2,30 +2,25 @@
 using System.Windows.Forms.VisualStyles;
 using Kata1.Dtos;
 using Kata1.Exceptions;
+using Kata1.Products.ProductAbstract;
 
 namespace Kata1 {
-    public class GildedRose {
-        public async Task<Product> UpdateProduct(Product product) {
+    public class GildedRoseSolid {
+        public async Task<ProductAbstract> UpdateProduct(ProductAbstract product) {
             await Task.Delay(1);
-            if(product.Name != "Sulfuras") {
-                product.Sellin -= 1;
-                UpdateQuality(product);
-            }
-
-            if(product.Quality < 0) { throw new GildedRoseException("The quality never can be negative"); }
-            if(product.Quality > 50 && product.Name != "Sulfuras") { throw new GildedRoseException("The quality never can be greater than 50"); }
-            if(product.Quality != 80 && product.Name == "Sulfuras" ) { throw new GildedRoseException("The quality Sulfuras always 80"); }
+            product.DecreaseSellin();
+            product.DecreaseQuality();
             return product;
         }
 
-        private static void UpdateQuality(Product product) {
+        private static void UpdateQuality(ProductAbstract product) {
             if(IsAgedBrie(product.Name) || (IsBackstagePasses(product.Name) && IsSellingGreaterThan(product.Sellin,10))) {
                 UpdateQuality(product, 1);
             }else if (IsBackstagePasses(product.Name)) {
-                if (IsSellingGreaterThan(product.Sellin, 5) && IsSellingLessOrEqualThan(product.Sellin, 10)) {
+                if (IsSellingGreaterThan(product.Sellin, 5) && product.Sellin <= 10) {
                     UpdateQuality(product, 2);
                 }
-                else if (IsSellingGreaterThan(product.Sellin, 0) && IsSellingLessOrEqualThan(product.Sellin, 5)) {
+                else if (IsSellingGreaterThan(product.Sellin, 0) && product.Sellin <= 5) {
                     UpdateQuality(product, 3);
                 }
                 else{
@@ -42,10 +37,6 @@ namespace Kata1 {
             }
         }
 
-        private static bool IsSellingLessOrEqualThan(int sellin, int number){
-            return sellin <= number;
-        }
-
         private static bool IsSellingGreaterThan(int sellin, int number){
             return sellin > number;
         }
@@ -54,7 +45,7 @@ namespace Kata1 {
             return name == "Conjured";
         }
 
-        private static void UpdateQuality(Product product, int productQualityIncrease){
+        private static void UpdateQuality(ProductAbstract product, int productQualityIncrease){
             product.Quality += productQualityIncrease;
         }
 
