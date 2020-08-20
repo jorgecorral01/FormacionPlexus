@@ -3,7 +3,11 @@
 namespace Kata1.Products{
     public class SulfurasProduct: ProductAbstract.ProductAbstract{
         public override void UpdateProduct(){
-            if (Quality != 80){throw new GildedRoseException("The quality Sulfuras always 80");}
+            if (IsQualityDiferentTo(80)){throw new GildedRoseException("The quality Sulfuras always 80");}
+        }
+
+        private bool IsQualityDiferentTo(int number){
+            return Quality != number;
         }
 
         public override void UpdateSellin(){

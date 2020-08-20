@@ -10,9 +10,9 @@
         }
 
         public override void UpdateQuality(){
-            if (Sellin > 5 && Sellin <= 10) {
+            if (IsSellinGreaterThan(5) && isSellinLessOrEqualThan(10)) {
                 Quality += 2;
-            }else if (Sellin > 0 && Sellin <= 5){
+            }else if (IsSellinGreaterThan(0) && isSellinLessOrEqualThan(5)) {
                 Quality += 3;
             }
             else if(Sellin == 0) {
@@ -22,6 +22,14 @@
                 Quality += 1;
             }
             
+        }
+
+        private bool isSellinLessOrEqualThan(int number) {
+            return Sellin <= number;
+        }
+
+        private bool IsSellinGreaterThan(int number){
+            return Sellin > number;
         }
     }
 }
