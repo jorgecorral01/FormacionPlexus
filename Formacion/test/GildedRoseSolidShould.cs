@@ -67,15 +67,24 @@ namespace test{
             product.Quality.Should().Be(80);
         }
 
+        [Test]
+        public void quality_increase_in_one_when_sellin_greater_then_10_days_when_product_name_is_backstage_passes() {
+            var product = new BackstagePassesProduct { Name = "Backstage passes", Sellin = 12, Quality = 10 };
+            
+            product.UpdateProduct();
+
+            product.Sellin.Should().Be(11);
+            product.Quality.Should().Be(11);
+        }
+
         //[Test]
-        //public async Task quality_increase_in_two_when_sellin_less_10_days_or_less_when_product_name_is_backstage_passes() {
-        //    var product = new Product { Name = "Backstage passes", Sellin = 11, Quality = 10 };
-        //    var gildedRose = new GildedRose();
+        //public void quality_increase_in_two_when_sellin_less_10_days_or_less_when_product_name_is_backstage_passes() {
+        //    var product = new BackstagePassesProduct { Name = "Backstage passes", Sellin = 11, Quality = 10 };
 
-        //    var actualProduct = await gildedRose.UpdateProduct(product);
+        //    product.UpdateProduct();
 
-        //    actualProduct.Sellin.Should().Be(10);
-        //    actualProduct.Quality.Should().Be(12);
+        //    product.Sellin.Should().Be(10);
+        //    product.Quality.Should().Be(12);
         //}
 
         //[Test]

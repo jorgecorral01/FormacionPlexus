@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\iClock.cs" />
     <Compile Include="Products\AgedBrieProduct.cs" />
     <Compile Include="Products\AnyProduct.cs" />
+    <Compile Include="Products\BackstagePassesProduct.cs" />
     <Compile Include="Products\ProductAbstract\ProductAbstract.cs" />
     <Compile Include="Products\SulfurasProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
