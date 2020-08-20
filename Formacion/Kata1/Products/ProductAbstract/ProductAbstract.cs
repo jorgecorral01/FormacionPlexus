@@ -6,7 +6,7 @@ namespace Kata1.Products.ProductAbstract{
         public int Quality{ get; set; }
         public string Name{ get; set; }
         public abstract void UpdateProduct();
-        public abstract void DecreaseSellin();
-        public abstract void DecreaseQuality();
+        public abstract void UpdateSellin();
+        public abstract void UpdateQuality();
     }
 }

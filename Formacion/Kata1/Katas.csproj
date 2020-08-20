@@ -63,6 +63,7 @@
     <Compile Include="GildedRoseSolid.cs" />
     <Compile Include="GildedRose.cs" />
     <Compile Include="Interfaces\iClock.cs" />
+    <Compile Include="Products\AgedBrieProduct.cs" />
     <Compile Include="Products\AnyProduct.cs" />
     <Compile Include="Products\ProductAbstract\ProductAbstract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

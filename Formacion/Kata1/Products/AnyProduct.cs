@@ -7,15 +7,15 @@ namespace Kata1.Products {
         //public override async Task UpdateProduct(){
         public override void UpdateProduct() {
             //await Task.Delay(1);
-            DecreaseSellin();
-            DecreaseQuality();
+            UpdateSellin();
+            UpdateQuality();
         }
 
-        public override void DecreaseSellin() {
+        public override void UpdateSellin() {
             Sellin -= 1;
         }
 
-        public override void DecreaseQuality() {
+        public override void UpdateQuality() {
             if(Sellin < 0) {
                 Quality -= 2;
             }

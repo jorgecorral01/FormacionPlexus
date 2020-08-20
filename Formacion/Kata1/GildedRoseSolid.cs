@@ -8,8 +8,8 @@ namespace Kata1 {
     public class GildedRoseSolid {
         public async Task<ProductAbstract> UpdateProduct(ProductAbstract product) {
             await Task.Delay(1);
-            product.DecreaseSellin();
-            product.DecreaseQuality();
+            product.UpdateSellin();
+            product.UpdateQuality();
             return product;
         }
 

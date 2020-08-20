@@ -1,8 +1,8 @@
-﻿using System;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Kata1;
+using Kata1.Dtos;
 using Kata1.Exceptions;
 using Kata1.Products;
 using NUnit.Framework;
@@ -38,16 +38,15 @@ namespace test{
             ex.MessageError.Should().Be("The quality never can be negative");
         }
 
-        //[Test]
-        //public async Task quality_increase_when_product_name_is_aged_brie() {
-        //    var product = new Product {Name = "Aged Brie", Sellin = 10, Quality = 10 };
-        //    var gildedRose = new GildedRose();
+        [Test]
+        public void quality_increase_when_product_name_is_aged_brie() {
+            var product = new AgedBrieProduct { Name = "Aged Brie", Sellin = 10, Quality = 10 };
+            
+            product.UpdateProduct();
 
-        //    var actualProduct = await gildedRose.UpdateProduct(product);
-
-        //    actualProduct.Quality.Should().Be(11);
-        //    actualProduct.Sellin.Should().Be(9);
-        //}
+            product.Sellin.Should().Be(9);
+            product.Quality.Should().Be(11);
+        }
 
         //[Test]
         //public void when_quality_will_be_greater_than_50_return_gildedrose_exception() {
