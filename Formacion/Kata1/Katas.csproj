@@ -66,6 +66,7 @@
     <Compile Include="Products\AgedBrieProduct.cs" />
     <Compile Include="Products\AnyProduct.cs" />
     <Compile Include="Products\ProductAbstract\ProductAbstract.cs" />
+    <Compile Include="Products\SulfurasProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -57,16 +57,15 @@ namespace test{
             ex.MessageError.Should().Be("The quality never can be greater than 50");
         }
 
-        //[Test]
-        //public async Task quality_and_sellin_never_decrease_when_product_name_is_sulfuras() {
-        //    var product = new Product { Name = "Sulfuras", Sellin = 10, Quality = 80 };
-        //    var gildedRose = new GildedRose();
+        [Test]
+        public void quality_and_sellin_never_decrease_when_product_name_is_sulfuras() {
+            var product = new SulfurasProduct { Name = "Sulfuras", Sellin = 10, Quality = 80 };
+            
+            product.UpdateProduct();
 
-        //    var actualProduct = await gildedRose.UpdateProduct(product);
-
-        //    actualProduct.Sellin.Should().Be(10);
-        //    actualProduct.Quality.Should().Be(80);
-        //}
+            product.Sellin.Should().Be(10);
+            product.Quality.Should().Be(80);
+        }
 
         //[Test]
         //public async Task quality_increase_in_two_when_sellin_less_10_days_or_less_when_product_name_is_backstage_passes() {
