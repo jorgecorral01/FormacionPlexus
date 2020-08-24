@@ -26,6 +26,6 @@ RUN pecl install xdebug-2.6.0 \
 ENV DISPLAY_ERRORS = "On"
 
 copy php.ini /usr/local/etc/php/
-copy hola.php /var/www/html/
+copy . /var/www/html/
 
 CMD ["/bin/bash"]
