@@ -28,4 +28,4 @@ ENV DISPLAY_ERRORS = "On"
 copy formacionDocker/php.ini /usr/local/etc/php/
 copy formacionDocker/. /var/www/html/
 
-CMD ["/bin/bash"]
+#CMD ["/bin/bash"]
