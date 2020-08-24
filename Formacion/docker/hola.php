@@ -6,7 +6,7 @@ $twig = new Twig_Enviroment($loader);
 
 echo $twig -> render ('index', array (name => 'nombre'));  	
 
-echo "hello";
+echo "hello 2";
 var_dump ($greetin);
 var_dump ($non_existing_variable);
 
