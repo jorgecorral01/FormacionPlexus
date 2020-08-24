@@ -25,7 +25,7 @@ RUN pecl install xdebug-2.6.0 \
 
 ENV DISPLAY_ERRORS = "On"
 
-copy php.ini /usr/local/etc/php/
-copy . /var/www/html/
+copy formacionDocker/php.ini /usr/local/etc/php/
+copy formacionDocker/. /var/www/html/
 
 CMD ["/bin/bash"]
