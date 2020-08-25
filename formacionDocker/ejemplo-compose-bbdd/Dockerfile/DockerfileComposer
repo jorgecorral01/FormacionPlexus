@@ -1,0 +1,20 @@
+FROM composer as backend
+
+WORKDIR /app
+
+CMD ["/bin/bash"]
+
+#COPY composer.json composer.lock /app/
+#RUN composer install \
+#	--ignore-platform-reqs \
+#	--no-ansi \
+#	--no-autoloader \
+#	--no_dev \
+#	--no-interaction \
+#	--no-scripts
+#	
+#COPY . /app/
+#RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
+
+
+
