@@ -1,7 +1,7 @@
 version: '2.3'
 services:
  app:
-  image: php:7.2-apache
+  image: midocker               #php:7.2-apache
   volumes:
     - /var/www/html
   ports:
