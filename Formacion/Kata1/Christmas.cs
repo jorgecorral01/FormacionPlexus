@@ -31,10 +31,9 @@ namespace Kata1{
             var i = 0;
             foreach(var light in ArrayLights) {
                 if(i >= 498 && i <= 502 ) {
-                    light.On = false;
-                }
-                else{
-                    light.On = true;
+                    if (light.Brightness - 1 >= 0){
+                        light.Brightness = light.Brightness - 1;
+                    }
                 }
                 i++;
             }
