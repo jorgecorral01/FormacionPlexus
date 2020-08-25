@@ -4,7 +4,13 @@
         public bool On{ get; set; }
 
         public void DecreaseBrightness(){
-            Brightness = Brightness - 1;
+            if (Brightness - 1 >= 0){
+                Brightness = Brightness - 1;
+            }
+        }
+
+        public void IncreaseBrightness(){
+            Brightness = Brightness + 1;
         }
     }
 }

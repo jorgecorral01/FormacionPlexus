@@ -13,7 +13,11 @@ namespace Kata1{
             }
         }
         public void TurnOnAllLight(){
-            ArrayLights = ArrayLights.Select(item => new Light{Brightness = item.Brightness + 1}).ToList();
+            var i = 0;
+            foreach(var light in ArrayLights) {
+                light.IncreaseBrightness();
+                i++;
+            }
         }
 
 
@@ -31,9 +35,7 @@ namespace Kata1{
             var i = 0;
             foreach(var light in ArrayLights) {
                 if(i >= 498 && i <= 502 ) {
-                    if (light.Brightness - 1 >= 0){
-                        light.DecreaseBrightness();
-                    }
+                    light.DecreaseBrightness();
                 }
                 i++;
             }
