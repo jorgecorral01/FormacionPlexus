@@ -9,13 +9,35 @@ namespace Kata1{
         public Christmas(){
             ArrayLights = new List<Light>();
             for (int i = 0; i < 1000; i++){
-                ArrayLights.Add(new Light{On = false});
+                ArrayLights.Add(new Light{On = false, Brightness = 0});
             }
         }
-        public void TurOnAllLight(){
-            ArrayLights = ArrayLights.Select(item => new Light{On = true}).ToList();
+        public void TurnOnAllLight(){
+            ArrayLights = ArrayLights.Select(item => new Light{Brightness = item.Brightness + 1}).ToList();
         }
 
-        
+
+        public void TougleLights(){
+            var i = 0;
+            foreach (var light in ArrayLights){
+                if (i % 2 == 0){
+                    light.On = !light.On ;
+                }
+                i++;
+            }
+        }
+
+        public void TounOffMiddleLights(){
+            var i = 0;
+            foreach(var light in ArrayLights) {
+                if(i >= 498 && i <= 502 ) {
+                    light.On = false;
+                }
+                else{
+                    light.On = true;
+                }
+                i++;
+            }
+        }
     }
 }
