@@ -31,7 +31,7 @@ namespace Kata1 {
             }
         }
 
-        public void TounOffMiddleLights() {
+        public void TurnOffMiddleLights() {
             for(var i = 0;i < 1000;i++) {
                 for(var j = 0;j < 1000;j++) {
                     if((i == 499 && j == 499) || (i == 499 && j == 500) || (i == 500 && j == 499) || (i == 500 && j == 500)) {

@@ -43,7 +43,7 @@ namespace test{
             var christmas = new Christmas();
             christmas.TurnOnAllLight();
 
-            christmas.TounOffMiddleLights();
+            christmas.TurnOffMiddleLights();
 
             christmas.ArrayLights[497,497].Brightness.Should().Be(1);
             christmas.ArrayLights[499,499].Brightness.Should().Be(0);
@@ -58,7 +58,7 @@ namespace test{
         public void when_turn_off_lights_brightness_never_will_be_negative() {
             var christmas = new Christmas();
 
-            christmas.TounOffMiddleLights();
+            christmas.TurnOffMiddleLights();
 
             christmas.ArrayLights[497,0].Brightness.Should().Be(0);
             christmas.ArrayLights[498, 0].Brightness.Should().Be(0);
@@ -69,5 +69,19 @@ namespace test{
             christmas.ArrayLights[503, 0].Brightness.Should().Be(0);
             
         }
+
+        [Test]
+        public void when_use_all_options_of_part_two_first_light_have_brightness_one(){
+            var christmas = new Christmas();
+            
+            christmas.TurnOnAllLight();
+            christmas.TouggleLights();
+            christmas.TurnOffMiddleLights();
+
+            christmas.ArrayLights[0, 0].Brightness.Should().Be(1);
+            christmas.ArrayLights[1, 0].Brightness.Should().Be(1);
+        }
+
+
     }
 }
