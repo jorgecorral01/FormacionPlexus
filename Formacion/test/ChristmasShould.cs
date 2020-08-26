@@ -23,7 +23,7 @@ namespace test{
         }
 
         [Test]
-        public void when_do_toggle_lights_we_have_five_hundred_with_brightness() {
+        public void when_do_toggle_lights_in_first_line_we_have_toggle_lights_in_first_line() {
             var christmas = new Christmas();
 
             christmas.TouggleLights();
@@ -32,6 +32,10 @@ namespace test{
             christmas.ArrayLights[1,0].Brightness.Should().Be(0);
             christmas.ArrayLights[2,0].Brightness.Should().Be(2);
             christmas.ArrayLights[3,0].Brightness.Should().Be(0);
+            christmas.ArrayLights[0, 1].Brightness.Should().Be(0);
+            christmas.ArrayLights[1, 1].Brightness.Should().Be(0);
+            christmas.ArrayLights[2, 1].Brightness.Should().Be(0);
+            christmas.ArrayLights[3, 1].Brightness.Should().Be(0);
         }
 
         [Test]
