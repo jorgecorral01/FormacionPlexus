@@ -128,13 +128,13 @@ namespace test {
                 }
             }
 
-            var totalBrightness = 0;
+            long totalBrightness = 0;
             for(var i = 0;i < 1000;i++) {
                 for(var j = 0;j < 1000;j++) {
                     totalBrightness += christmas.ArrayLights[i, j].Brightness;
                 }
             }
-
+            totalBrightness.Should().Be(1000000000); //TODO i think this is the good result.
             totalBrightness.Should().Be(2000000);
         }
 
