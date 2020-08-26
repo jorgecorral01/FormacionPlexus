@@ -1,6 +1,7 @@
 ﻿namespace Kata1.Dtos{
     public class Valor {
-        public string valores { get; set; }
-        public int suma { get; set; }
+        public string Cajas { get; set; }
+        public int Suma { get; set; }
+        public int Coste{ get; set; }
     }
 }
