@@ -16,20 +16,22 @@ namespace test{
 
             christmas.TurnOnAllLight();
 
-            christmas.ArrayLights.Where(item => item.Brightness == 1).Should().HaveCount(1000);
+            christmas.ArrayLights[0, 0].Brightness.Should().Be(1);
+            christmas.ArrayLights[0, 999].Brightness.Should().Be(1);
+            christmas.ArrayLights[999, 0].Brightness.Should().Be(1);
+            christmas.ArrayLights[999, 999].Brightness.Should().Be(1);
         }
 
         [Test]
-        public void turn_on_togle_lights_we_have_fifty_light_on() {
+        public void when_do_toggle_lights_we_have_five_hundred_with_brightness() {
             var christmas = new Christmas();
 
-            christmas.TougleLights();
+            christmas.TouggleLights();
 
-            christmas.ArrayLights.Where(item => item.On == true).Should().HaveCount(500);
-            christmas.ArrayLights[0].On.Should().Be(true);
-            christmas.ArrayLights[1].On.Should().Be(false);
-            christmas.ArrayLights[2].On.Should().Be(true);
-            christmas.ArrayLights[3].On.Should().Be(false);
+            christmas.ArrayLights[0,0].Brightness.Should().Be(2);
+            christmas.ArrayLights[1,0].Brightness.Should().Be(0);
+            christmas.ArrayLights[2,0].Brightness.Should().Be(2);
+            christmas.ArrayLights[3,0].Brightness.Should().Be(0);
         }
 
         [Test]
@@ -39,14 +41,13 @@ namespace test{
 
             christmas.TounOffMiddleLights();
 
-            christmas.ArrayLights.Where(item => item.Brightness == 0).Should().HaveCount(5);
-            christmas.ArrayLights[497].Brightness.Should().Be(1);
-            christmas.ArrayLights[498].Brightness.Should().Be(0);
-            christmas.ArrayLights[499].Brightness.Should().Be(0);
-            christmas.ArrayLights[500].Brightness.Should().Be(0);
-            christmas.ArrayLights[501].Brightness.Should().Be(0);
-            christmas.ArrayLights[502].Brightness.Should().Be(0);
-            christmas.ArrayLights[503].Brightness.Should().Be(1);
+            christmas.ArrayLights[497,497].Brightness.Should().Be(1);
+            christmas.ArrayLights[499,499].Brightness.Should().Be(0);
+            christmas.ArrayLights[499,500].Brightness.Should().Be(0);
+            christmas.ArrayLights[500,499].Brightness.Should().Be(0);
+            christmas.ArrayLights[500,500].Brightness.Should().Be(0);
+            christmas.ArrayLights[501,500].Brightness.Should().Be(1);
+            
         }
 
         [Test]
@@ -55,14 +56,14 @@ namespace test{
 
             christmas.TounOffMiddleLights();
 
-            christmas.ArrayLights[497].Brightness.Should().Be(0);
-            christmas.ArrayLights[498].Brightness.Should().Be(0);
-            christmas.ArrayLights[499].Brightness.Should().Be(0);
-            christmas.ArrayLights[500].Brightness.Should().Be(0);
-            christmas.ArrayLights[501].Brightness.Should().Be(0);
-            christmas.ArrayLights[502].Brightness.Should().Be(0);
-            christmas.ArrayLights[503].Brightness.Should().Be(0);
-            christmas.ArrayLights.Where(item => item.Brightness == 0).Should().HaveCount(1000);
+            christmas.ArrayLights[497,0].Brightness.Should().Be(0);
+            christmas.ArrayLights[498, 0].Brightness.Should().Be(0);
+            christmas.ArrayLights[499, 0].Brightness.Should().Be(0);
+            christmas.ArrayLights[500, 0].Brightness.Should().Be(0);
+            christmas.ArrayLights[501, 0].Brightness.Should().Be(0);
+            christmas.ArrayLights[502, 0].Brightness.Should().Be(0);
+            christmas.ArrayLights[503, 0].Brightness.Should().Be(0);
+            
         }
     }
 }

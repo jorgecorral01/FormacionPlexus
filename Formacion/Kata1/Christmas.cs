@@ -4,40 +4,42 @@ using Kata1.Dtos;
 
 namespace Kata1{
     public class Christmas{
-        public List<Light> ArrayLights { get; set; }
+        public Light[,] ArrayLights { get; set; }
 
         public Christmas(){
-            ArrayLights = new List<Light>();
-            for (int i = 0; i < 1000; i++){
-                ArrayLights.Add(new Light{On = false, Brightness = 0});
+            ArrayLights = new Light[1000,1000];
+            for (var i = 0; i < 1000; i++){
+                for (var j = 0; j < 1000; j++){
+                    ArrayLights[i,j] = new Light{On = false, Brightness = 0};
+                }
             }
         }
         public void TurnOnAllLight(){
-            var i = 0;
-            foreach(var light in ArrayLights) {
-                light.IncreaseBrightness();
-                i++;
+            for(var i = 0;i < 1000;i++) {
+                for(var j = 0;j < 1000;j++) {
+                    ArrayLights[i, j].IncreaseBrightness();
+                }
             }
         }
 
 
-        public void TougleLights(){
-            var i = 0;
-            foreach (var light in ArrayLights){
-                if (i % 2 == 0){
-                    light.On = !light.On ;
+        public void TouggleLights(){
+            for(var i = 0;i < 1000;i++) {
+                for(var j = 0;j < 1000;j++) {
+                    if(i % 2 == 0) {
+                        ArrayLights[i, j].Toggle();
+                    }
                 }
-                i++;
             }
         }
 
         public void TounOffMiddleLights(){
-            var i = 0;
-            foreach(var light in ArrayLights) {
-                if(i >= 498 && i <= 502 ) {
-                    light.DecreaseBrightness();
+            for(var i = 0;i < 1000;i++) {
+                for(var j = 0;j < 1000;j++) {
+                    if ((i == 499 && j == 499) || (i == 499 && j == 500) || (i == 500 && j == 499) || (i == 500 && j == 500)) {
+                        ArrayLights[i, j].DecreaseBrightness();
+                    }
                 }
-                i++;
             }
         }
     }
