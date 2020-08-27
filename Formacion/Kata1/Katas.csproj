@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boxes\Abstract\Box.cs" />
+    <Compile Include="Boxes\Box100.cs" />
+    <Compile Include="Boxes\Box120.cs" />
+    <Compile Include="Boxes\Box50.cs" />
+    <Compile Include="Boxes\Box75.cs" />
     <Compile Include="Christmas.cs" />
     <Compile Include="Clock.cs" />
     <Compile Include="ClsBowling.cs" />
