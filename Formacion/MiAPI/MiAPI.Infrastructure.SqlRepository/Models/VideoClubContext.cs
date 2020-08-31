@@ -24,8 +24,6 @@ namespace MiAPI.Infrastructure.Repository.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                //optionsBuilder.UseSqlServer("Persist Security Info=False;Integrated Security=false;database=VideoClubQA;server=.\\Formacion;User ID=Formacion;pwd=Pruebas2019..");
                 IConfiguration configuration = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json", true, true)
                     .Build();
