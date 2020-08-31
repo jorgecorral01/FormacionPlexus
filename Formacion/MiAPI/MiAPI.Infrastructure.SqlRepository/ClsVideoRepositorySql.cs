@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading;
@@ -18,9 +19,14 @@ namespace MiAPI.Infrastructure.SqlRepository{
         public virtual void Add(Video video){
             using(SqlConnection connection = new SqlConnection(
                 _connectionString)) {
-                SqlCommand command = new SqlCommand(string.Format("insert into videos (name, format) values('{0}','{1}')", video.name, video.format), connection);
+                SqlCommand command = new SqlCommand(string.Format("Select * from Videos where name = '{0}'", video.name), connection);
                 command.Connection.Open();
+                object count =  command.ExecuteScalar();
+                if (Convert.ToInt64(count)>=1) { throw new VideoAlreadyExistException();}
+
+                command = new SqlCommand(string.Format("insert into videos (name, format) values('{0}','{1}')", video.name, video.format), connection);
                 command.ExecuteNonQuery();
+
             }
         }
 

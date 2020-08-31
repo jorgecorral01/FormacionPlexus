@@ -45,6 +45,16 @@ namespace MiAPI.Infrastructure.SqlRepository.Test {
             ValidateIfExistNewVideo(video);
         }
 
+        [Test]
+        public void we_should_return_existing_video_exception_when_try_add_existing_video() {
+            CleanVideoTable();
+            clsVideoRepositorySql.Add(video);
+
+            var ex = Assert.Throws<VideoAlreadyExistException>(() => clsVideoRepositorySql.Add(video));
+
+            ex.Should().BeOfType<VideoAlreadyExistException>();
+        }
+
         private static void ValidateIfExistNewVideo(Video video){
             var sqlDataAdapter = new SqlDataAdapter();
             var dt = new DataTable();

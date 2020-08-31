@@ -20,4 +20,7 @@ namespace MiAPI.Business.Dtos{
             Name = name;
         }
     }
+
+    public class VideoAlreadyExistException : Exception {
+    }
 }
