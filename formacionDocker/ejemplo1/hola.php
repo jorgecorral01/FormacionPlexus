@@ -6,7 +6,8 @@
 #
 #echo $twig -> render ('index', array (name => 'nombre'));  	
 
-echo "hello";
-var_dump ($greetin);
-var_dump ($non_existing_variable);
+http_response.code(500);
+#echo "hello";
+#var_dump ($greetin);
+#var_dump ($non_existing_variable);
 
