@@ -16,7 +16,7 @@
 
 FROM php:7.2-apache
 
-LABEL maintainer = "jcc"
+LABEL maintainer = "jcc2"
 LABEL application = "MyAPP"
 
 RUN pecl install xdebug-2.6.0 \
