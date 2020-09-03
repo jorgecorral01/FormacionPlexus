@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: formacion
+  name: formacion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: formacion
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: formacion
+    spec:
+      containers:
+      - image: jorgecorral/formacion:latest
+        name: formacion
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}

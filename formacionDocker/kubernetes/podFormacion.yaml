@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-08-31T20:24:01Z"
+  labels:
+    run: formacion
+  managedFields:
+  - apiVersion: v1
+    manager: kubectl
+    operation: Update
+    time: "2020-08-31T20:24:01Z"
+  name: formacion
+  namespace: default
+  resourceVersion: "12360"
+  selfLink: /api/v1/namespaces/default/pods/formacion
+  uid: 6f9ab761-15a5-43dc-9a04-9ddba3c43148
+spec:
+  containers:
+  - args:
+    - dry-run
+    image: jorgecorral/formacion
+    imagePullPolicy: Always
+    name: formacion
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    resources: 
+        limits:
+           cpu:50m
+           memory: 64G
+        request:
+           cpu:50m
+           memory: 64G
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-vtxxv
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  priority: 0
+  restartPolicy: Never
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-vtxxv
+    secret:
+      defaultMode: 420
+      secretName: default-token-vtxxv
+status:
+  phase: Pending
+  qosClass: BestEffort
